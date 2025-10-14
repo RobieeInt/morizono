@@ -3,7 +3,7 @@
         <div class="flex h-14 items-center justify-between">
             <!-- left: logo -->
             <a href="{{ route('landing') }}" class="flex items-center gap-2">
-                <img src="{{ asset('logo/logo.png') }}" alt="Morizono" class="h-6 w-auto">
+                <img src="{{ asset('logo/logo.webp') }}" alt="Morizono" class="h-6 w-auto">
                 <span class="sr-only">Morizono</span>
             </a>
 

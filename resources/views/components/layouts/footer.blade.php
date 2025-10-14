@@ -12,7 +12,7 @@
 
             {{-- Brand + copyrights (span 2 on lg) --}}
             <div class="col-span-2">
-                <img src="{{ asset('logo/logowhite.png') }}" alt="Morizono" class="h-6 sm:h-7 w-auto mb-6 opacity-90">
+                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono" class="h-6 sm:h-7 w-auto mb-6 opacity-90">
                 <p class="text-xs leading-6 text-white/70">
                     Copyright © {{ date('Y') }}<br>
                     PT Graha Perdana Indah.<br>

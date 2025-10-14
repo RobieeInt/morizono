@@ -3,8 +3,8 @@
     'title' => 'Lorem Ipsum Dolor sit Amet insectum',
     'desc' =>
         'A premium cluster house in Sawangan, Depok, where minimalist elegance meets spacious, open-concept living. Designed for modern lifestyles, Morizono offers serene surroundings and a seamless blend of functionality and style, making it the ideal home for families or individuals seeking comfort and sophistication.',
-    'imgLeft' => asset('images/about/about1.jpg'),
-    'imgRight' => asset('images/about/about2.png'),
+    'imgLeft' => asset('images/about/about1.webp'),
+    'imgRight' => asset('images/about/about2.webp'),
 ])
 
 <section id="about" class="bg-[#EFECDC]">
@@ -12,7 +12,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
             {{-- left image --}}
             <div>
-                <div class="rounded-[22px] overflow-hidden shadow-sm">
+                <div class="rounded-[22px] overflow-hidden shadow-sm md:h-96 lg:h-[500px]">
                     <img src="{{ $imgLeft }}" alt="Morizono Gate" class="w-full h-full object-cover">
                 </div>
             </div>
@@ -30,7 +30,7 @@
 
             {{-- right image --}}
             <div>
-                <div class="rounded-[22px] overflow-hidden shadow-sm">
+                <div class="rounded-[22px] overflow-hidden shadow-sm md:h-96 lg:h-[500px]">
                     <img src="{{ $imgRight }}" alt="Morizono Facilities" class="w-full h-full object-cover">
                 </div>
             </div>

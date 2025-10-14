@@ -1,3 +1,24 @@
+/* === Import font dulu === */
+
+/* Marcellus (Google Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
+
+/* Avenir – fallback ke lokal atau file yang lo punya */
+@font-face {
+    font-family: "Avenir";
+    src: local("Avenir"), local("Avenir LT Std"),
+        url("/fonts/Avenir.woff2") format("woff2"),
+        url("/fonts/Avenir.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Set default font untuk seluruh halaman */
+html {
+    font-family: "Avenir", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* === Tailwind directives === */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

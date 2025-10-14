@@ -1,5 +1,5 @@
 <x-layouts.site :title="'Morizono'">
-    <x-sections.hero :background="asset('images/hero.jpg')" :logo="asset('logo/logo.png')" title="MORIZONO" tagline="A Home Where Life Begins and Grows"
+    <x-sections.hero :background="asset('images/hero.webp')" :logo="asset('logo/logowhite.webp')" title="MORIZONO" tagline="A Home Where Life Begins and Grows"
         subtitle="Lorem ipsum dolor sit amet insectum lorem ipsum" :clusters="[
             ['label' => 'Sumire', 'href' => '#clusters'],
             ['label' => 'Ayame', 'href' => '#clusters'],
@@ -9,7 +9,7 @@
 
 
 
-    <x-sections.about :img-left="asset('images/about/about1.jpg')" :img-right="asset('images/about/about2.png')" title="Lorem Ipsum Dolor sit Amet insectum" />
+    <x-sections.about :img-left="asset('images/about/about1.webp')" :img-right="asset('images/about/about2.webp')" title="Lorem Ipsum Dolor sit Amet insectum" />
 
     <x-sections.cluster-intro title="Lorem Ipsum dolor sit" />
 
@@ -46,11 +46,11 @@
                     ],
                 ],
                 'images' => [
-                    asset('images/sumire/sumire1.jpg'),
-                    asset('images/sumire/sumire2.jpg'),
-                    asset('images/sumire/sumire3.jpg'),
-                    asset('images/sumire/sumire4.jpg'),
-                    asset('images/sumire/sumire5.jpg'),
+                    asset('images/sumire/sumire1.webp'),
+                    asset('images/sumire/sumire2.webp'),
+                    asset('images/sumire/sumire3.webp'),
+                    asset('images/sumire/sumire4.webp'),
+                    asset('images/sumire/sumire5.webp'),
                 ],
             ],
             [
@@ -67,14 +67,14 @@
                     ['title' => 'House Flooring', 'detail' => ['Homogeneous Tile 60x60']],
                 ],
                 'images' => [
-                    asset('images/ayame/ayame1.jpg'),
-                    asset('images/ayame/ayame2.jpg'),
-                    asset('images/ayame/ayame3.jpg'),
-                    asset('images/ayame/ayame4.jpg'),
-                    asset('images/ayame/ayame5.jpg'),
-                    asset('images/ayame/ayame6.jpg'),
-                    asset('images/ayame/ayame7.jpg'),
-                    asset('images/ayame/ayame8.jpg'),
+                    asset('images/ayame/ayame1.webp'),
+                    asset('images/ayame/ayame2.webp'),
+                    asset('images/ayame/ayame3.webp'),
+                    asset('images/ayame/ayame4.webp'),
+                    asset('images/ayame/ayame5.webp'),
+                    asset('images/ayame/ayame6.webp'),
+                    asset('images/ayame/ayame7.webp'),
+                    asset('images/ayame/ayame8.webp'),
                 ],
             ],
             [
@@ -88,14 +88,14 @@
                     ['title' => 'House Flooring', 'detail' => ['60x60 tile', 'Lantai kamar kayu laminated']],
                 ],
                 'images' => [
-                    asset('images/kaede/kaede1.jpg'),
-                    asset('images/kaede/kaede2.jpg'),
-                    asset('images/kaede/kaede3.jpg'),
-                    asset('images/kaede/kaede4.jpg'),
-                    asset('images/kaede/kaede5.jpg'),
-                    asset('images/kaede/kaede6.jpg'),
-                    asset('images/kaede/kaede7.jpg'),
-                    asset('images/kaede/kaede8.jpg'),
+                    asset('images/kaede/kaede1.webp'),
+                    asset('images/kaede/kaede2.webp'),
+                    asset('images/kaede/kaede3.webp'),
+                    asset('images/kaede/kaede4.webp'),
+                    asset('images/kaede/kaede5.webp'),
+                    asset('images/kaede/kaede6.webp'),
+                    asset('images/kaede/kaede7.webp'),
+                    asset('images/kaede/kaede8.webp'),
                 ],
             ],
         ];
@@ -111,7 +111,7 @@
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                 'category' => 'Lifestyle',
                 'date' => '12 Oct 2025',
-                'image' => asset('images/news/run.png'),
+                'image' => asset('images/news/run.webp'),
                 'url' => '#',
             ],
             [
@@ -119,7 +119,7 @@
                 'excerpt' => 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.',
                 'category' => 'Guide',
                 'date' => '12 Oct 2025',
-                'image' => asset('images/news/bus.png'),
+                'image' => asset('images/news/bus.webp'),
                 'url' => '#',
             ],
             [
@@ -128,7 +128,7 @@
                     'Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.',
                 'category' => 'Facility',
                 'date' => '12 Oct 2025',
-                'image' => asset('images/news/pool.png'),
+                'image' => asset('images/news/pool.webp'),
                 'url' => '#',
             ],
             // tambahin lagi kalau mau
@@ -137,7 +137,7 @@
 
     <x-sections.news-carousel :posts="$posts" seeAllUrl="#" />
 
-    <x-sections.contact-map :title="'How can we help you?\nWrite us a message'" :map-query="'Jl. Cinangka Raya, Curug, Bojongsari, Depok, Jawa Barat 16517'" />
+    <x-sections.contact-map :title="'How can we help you? Write us a message'" :map-query="'Jl. Cinangka Raya, Curug, Bojongsari, Depok, Jawa Barat 16517'" />
 
     {{-- section placeholders biar link nav ada targetnya --}}
     {{-- <section id="about" class="py-24"></section>

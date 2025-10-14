@@ -26,18 +26,18 @@
     {{-- konten utama, bener2 tengah --}}
     <div class="relative z-10 flex flex-col items-center justify-center max-w-6xl px-4 sm:px-6 lg:px-8">
         @if ($logo)
-            <img src="{{ $logo }}" alt="Morizono" class="h-10 sm:h-12 mb-5 opacity-95">
+            <img src="{{ $logo }}" alt="Morizono" class="h-16 md:h-28 lg:h-32 mb-5 opacity-95">
         @endif
-
+        {{--
         <h1 class="tracking-[0.35em] text-white text-4xl sm:text-5xl md:text-6xl font-light">
             {{ $title }}
-        </h1>
+        </h1> --}}
 
-        <p class="mt-3 text-white/90 text-sm sm:text-base">
+        <p class="mt-3 text-white/90 text-sm sm:text-base font-headings uppercase tracking-[0.2em]">
             {{ $tagline }}
         </p>
 
-        <p class="mt-5 max-w-2xl text-white/80 text-xs sm:text-sm">
+        <p class="mt-5 max-w-2xl text-white/80 text-xs sm:text-sm font-heading uppercase tracking-[0.15em]">
             {{ $subtitle }}
         </p>
 
@@ -53,12 +53,12 @@
     </div>
 
     {{-- floating CTA kanan atas (optional, mirip mockup navbar) --}}
-    @if ($ctaLabel && $ctaHref)
+    {{-- @if ($ctaLabel && $ctaHref)
         <a href="{{ $ctaHref }}"
             class="hidden md:inline-flex absolute top-4 right-4 bg-amber-300 hover:bg-amber-400 text-gray-900 text-sm font-semibold rounded-full px-4 py-2 transition z-20">
             {{ $ctaLabel }}
         </a>
-    @endif
+    @endif --}}
 
     {{-- WhatsApp floating button kiri bawah --}}
     <a href="https://wa.me/628568780192" target="_blank" rel="noopener"

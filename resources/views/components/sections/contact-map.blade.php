@@ -1,5 +1,5 @@
 @props([
-    'title' => "How can we help you?\nWrite us a message",
+    'title' => 'How can we help you? Write us a message',
     'mapQuery' => 'Jl. Cinangka Raya, Curug, Bojongsari, Depok, Jawa Barat 16517',
 ])
 
@@ -8,7 +8,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch">
             {{-- LEFT: FORM PANEL --}}
             <div class="h-full">
-                <div class="rounded-md bg-white/5 h-full p-6 sm:p-8 flex flex-col">
+                <div class="rounded-md h-full p-6 sm:p-8 flex flex-col">
                     <h2 class="whitespace-pre-line text-3xl sm:text-4xl font-light leading-tight text-[#C8A767]">
                         {!! nl2br(e($title)) !!}
                     </h2>
@@ -23,7 +23,7 @@
 
             {{-- RIGHT: MAP PANEL --}}
             <div class="h-full">
-                <div class="rounded-md overflow-hidden bg-white/5 h-full flex flex-col">
+                <div class="rounded-md overflow-hidden h-full flex flex-col">
                     <iframe title="Morizono Location" class="w-full flex-1 min-h-[420px]" style="border:0"
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                         src="https://www.google.com/maps?q={{ urlencode($mapQuery) }}&hl=id&z=16&output=embed">
