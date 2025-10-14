@@ -1,0 +1,39 @@
+@props([
+    'titleSmall' => 'ABOUT US',
+    'title' => 'Lorem Ipsum Dolor sit Amet insectum',
+    'desc' =>
+        'A premium cluster house in Sawangan, Depok, where minimalist elegance meets spacious, open-concept living. Designed for modern lifestyles, Morizono offers serene surroundings and a seamless blend of functionality and style, making it the ideal home for families or individuals seeking comfort and sophistication.',
+    'imgLeft' => asset('images/about/about1.jpg'),
+    'imgRight' => asset('images/about/about2.png'),
+])
+
+<section id="about" class="bg-[#EFECDC]">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+            {{-- left image --}}
+            <div>
+                <div class="rounded-[22px] overflow-hidden shadow-sm">
+                    <img src="{{ $imgLeft }}" alt="Morizono Gate" class="w-full h-full object-cover">
+                </div>
+            </div>
+
+            {{-- center copy --}}
+            <div class="text-center md:px-6">
+                <div class="tracking-[0.25em] text-xs text-gray-700/80 mb-3">{{ $titleSmall }}</div>
+                <h2 class="text-3xl sm:text-4xl leading-snug font-light text-[#C8A767]">
+                    {{ $title }}
+                </h2>
+                <p class="mt-4 text-sm sm:text-base text-gray-700/90 leading-relaxed">
+                    {{ $desc }}
+                </p>
+            </div>
+
+            {{-- right image --}}
+            <div>
+                <div class="rounded-[22px] overflow-hidden shadow-sm">
+                    <img src="{{ $imgRight }}" alt="Morizono Facilities" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
