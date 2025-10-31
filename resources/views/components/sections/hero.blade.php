@@ -1,10 +1,11 @@
 @props([
     // path gambar hero. Isi absolut atau url(), terserah selera
     'background' => asset('images/hero.jpg'),
+    'welcomeText' => 'WELCOME TO',
     'logo' => null, // path logo kecil di atas title (opsional)
     'title' => '',
-    'tagline' => 'A Home Where Life Begins and Grows',
-    'subtitle' => 'Lorem ipsum dolor sit amet insectum lorem ipsum',
+    'tagline' => 'Crafted with Japanese Precision, Built for Comfortable Living',
+    'subtitle' => '',
     'clusters' => [
         ['label' => 'Sumire', 'href' => '#sumire'],
         ['label' => 'Ayame', 'href' => '#ayame'],
@@ -25,6 +26,13 @@
 
     {{-- konten utama, bener2 tengah --}}
     <div class="relative z-10 flex flex-col items-center justify-center max-w-6xl px-4 sm:px-6 lg:px-8">
+
+
+        <p
+            class="mt-5 mb-10 max-w-2xl text-white text-5xl sm:text-7xl md:text-5xl font-heading uppercase tracking-[0.15em]">
+            {{ $welcomeText ?? 'zz' }}
+        </p>
+
         @if ($logo)
             <img src="{{ $logo }}" alt="Morizono" class="h-16 md:h-28 lg:h-32 mb-5 opacity-95">
         @endif
@@ -38,14 +46,14 @@
         </p>
 
         <p class="mt-5 max-w-2xl text-white/80 text-xs sm:text-sm font-heading uppercase tracking-[0.15em]">
-            {{ $subtitle }}
+            {{-- {{ $subtitle }} --}}
         </p>
 
         {{-- cluster buttons --}}
         <div class="mt-8 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-3">
             @foreach ($clusters as $c)
                 <a href="{{ $c['href'] }}"
-                    class="backdrop-blur bg-white/25 hover:bg-white/35 text-gray-900 rounded px-6 py-3 text-center text-sm font-medium transition">
+                    class="backdrop-blur bg-white/25 hover:bg-white/35 text-white rounded px-6 py-3 text-center text-sm font-medium transition">
                     {{ $c['label'] }}
                 </a>
             @endforeach

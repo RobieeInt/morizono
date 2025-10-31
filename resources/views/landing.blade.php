@@ -9,9 +9,50 @@
 
 
 
-    <x-sections.about :img-left="asset('images/about/about1.webp')" :img-right="asset('images/about/about2.webp')" title="Lorem Ipsum Dolor sit Amet insectum" />
+    <x-sections.info-project :img-left="asset('images/about/about1.webp')" :img-right="asset('images/about/about2.webp')" title="Lorem Ipsum Dolor sit Amet insectum" />
+    {{-- <x-sections.about :img-left="asset('images/about/about1.webp')" :img-right="asset('images/about/about2.webp')" title="Lorem Ipsum Dolor sit Amet insectum" /> --}}
+
+
 
     <x-sections.cluster-intro title="Lorem Ipsum dolor sit" />
+    @php
+        $sosmed = [
+            [
+                'title' => 'Kegiatan di Morizono',
+                'excerpt' => 'Kehangatan keluarga di hunian Morizono yang nyaman dan asri.',
+                'category' => 'Community',
+                'date' => '12 Oct 2025',
+                'embed' => 'https://www.instagram.com/reel/DQWDg2RE5ru/embed',
+                'url' => 'https://www.instagram.com/reel/DQWDg2RE5ru/',
+            ],
+            [
+                'title' => 'Suasana Lingkungan',
+                'excerpt' => 'Area hijau dan udara segar untuk gaya hidup sehat.',
+                'category' => 'Lifestyle',
+                'date' => '14 Oct 2025',
+                'embed' => 'https://www.instagram.com/reel/DQESNuHkwnl/embed',
+                'url' => 'https://www.instagram.com/reel/DQESNuHkwnl/',
+            ],
+            [
+                'title' => 'Progress Pembangunan',
+                'excerpt' => 'Pantau terus progres pembangunan cluster Morizono.',
+                'category' => 'Update',
+                'date' => '16 Oct 2025',
+                'embed' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/embed',
+                'url' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/',
+            ],
+            [
+                'title' => 'Event Keluarga',
+                'excerpt' => 'Kebersamaan di acara keluarga Morizono Residence.',
+                'category' => 'Event',
+                'date' => '17 Oct 2025',
+                'embed' => 'https://www.instagram.com/reel/DPAgt1YE8s8/embed',
+                'url' => 'https://www.instagram.com/reel/DPAgt1YE8s8/',
+            ],
+        ];
+    @endphp
+
+    <x-sections.sosmed-carousel :sosmed="$sosmed" seeAllUrl="#" />
 
     @php
         $clusters = [

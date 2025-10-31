@@ -1,6 +1,6 @@
 @props([
-    'eyebrow' => 'OUR CLUSTER',
-    'title' => 'Lorem Ipsum dolor sit',
+    'eyebrow' => 'Why Morizono?',
+    'titlee' => 'Why Morizono?',
     'desc' =>
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
 ])
@@ -11,7 +11,7 @@
             <div>
                 <div class="text-xs tracking-[0.25em] text-gray-600 mb-2">{{ $eyebrow }}</div>
                 <h3 class="text-4xl sm:text-5xl font-light text-[#C8A767]">
-                    {{ $title }}
+                    {{ $titlee }}
                 </h3>
             </div>
             <div class="text-sm sm:text-base text-gray-700/90 leading-relaxed">

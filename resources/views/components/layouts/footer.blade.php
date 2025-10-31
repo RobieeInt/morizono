@@ -8,15 +8,20 @@
 
 <footer class="bg-[#353232] text-white/90">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-8">
 
             {{-- Brand + copyrights (span 2 on lg) --}}
             <div class="col-span-2">
-                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono" class="h-6 sm:h-7 w-auto mb-6 opacity-90">
+                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono"
+                    class="block w-full h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
+
+                <img src="{{ asset('logo/footerph.webp') }}" alt="Sumitomo Forestry"
+                    class="block w-full h-auto sm:w-auto sm:h-12 mb-6 opacity-90 object-contain">
+
                 <p class="text-xs leading-6 text-white/70">
                     Copyright © {{ date('Y') }}<br>
                     PT Graha Perdana Indah.<br>
-                    All Rights Reserved. <br>
+                    All Rights Reserved.<br>
                     By Reconext
                 </p>
             </div>
