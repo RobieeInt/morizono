@@ -3,6 +3,7 @@
     'subtitle' => 'Stay connected with Morizono for updates, stories, and more',
     'seeAllUrl' => '#',
     // sosmed: array of [title, excerpt, category, date, embed, url]
+    // NOTE: kita pakai 'url' untuk permalink IG (lebih stabil). 'embed' diabaikan.
     'sosmed' => [],
 ])
 
@@ -11,12 +12,14 @@
         perPage: (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1),
         intervalMs: 5000
     })" x-init="$watch('perPage', v => updateDots());
-    window.addEventListener('resize', () => { perPage = (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1); });
+    window.addEventListener('resize', () => {
+        perPage = (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1);
+    });
     init();"
         @mouseenter="pause()" @mouseleave="play()">
-
-        {{-- header --}}
-        {{-- <div class="grid grid-cols-3 items-end mb-6 sm:mb-8">
+        {{-- header (kalau mau aktifin lagi silakan) --}}
+        {{--
+        <div class="grid grid-cols-3 items-end mb-6 sm:mb-8">
             <div>
                 <h2 class="text-3xl sm:text-4xl font-light tracking-tight text-gray-900">{{ $title }}</h2>
             </div>
@@ -26,9 +29,9 @@
             <div class="text-right">
                 <a href="{{ $seeAllUrl }}" class="text-sm underline hover:text-gray-900">Visit Page</a>
             </div>
-        </div> --}}
+        </div>
+        --}}
 
-        {{-- slider --}}
         <div class="relative">
             {{-- buttons --}}
             <button type="button" @click="prev()" aria-label="Previous"
@@ -42,46 +45,55 @@
 
             {{-- track --}}
             <div x-ref="track" class="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
-                @scroll.debounce.100="onScroll()" @pointerdown="pause()" @pointerup="play()">
+                @scroll.debounce.120="onScroll()" @pointerdown="pause()" @pointerup="play()">
                 <div class="flex gap-6 lg:gap-8 w-max">
                     @foreach ($sosmed as $p)
+                        {{-- gunakan $p['url'] sebagai permalink IG --}}
+                        @php
+                            $permalink = $p['url'] ?? '';
+                        @endphp
                         <article class="relative snap-start w-[86vw] sm:w-[44vw] lg:w-[352px] shrink-0">
-                            <a href="{{ $p['url'] }}" target="_blank" rel="noopener" class="block group">
-                                <div class="relative rounded-[10px] overflow-hidden shadow">
-                                    {{-- Instagram Embed --}}
-                                    <div class="aspect-[9/16] bg-black relative">
-                                        <iframe src="{{ $p['embed'] }}" class="w-full h-full" frameborder="0"
-                                            allowfullscreen scrolling="no" loading="lazy">
-                                        </iframe>
-                                        {{-- klik overlay biar area iframe tetap bisa diklik --}}
-                                        <div class="absolute inset-0"></div>
-                                    </div>
+                            <div class="relative rounded-[10px] overflow-hidden shadow">
 
-                                    {{-- gradient overlay --}}
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-                                    </div>
+                                {{-- klik overlay ke IG --}}
+                                <a href="{{ $permalink }}" target="_blank" rel="noopener"
+                                    class="absolute inset-0 z-20" aria-label="Open Instagram post"></a>
 
-                                    {{-- badges --}}
-                                    <div class="absolute top-3 left-4 text-[12px] font-medium text-white/90">
-                                        {{ $p['category'] ?? '' }}
-                                    </div>
-                                    <div class="absolute top-3 right-4 text-[12px] text-white/80">
-                                        {{ $p['date'] ?? '' }}
-                                    </div>
-
-                                    {{-- caption --}}
-                                    <div class="absolute left-0 right-0 bottom-0 p-4 sm:p-5 text-white">
-                                        <h3
-                                            class="text-xl sm:text-2xl font-semibold leading-snug group-hover:underline">
-                                            {{ $p['title'] }}
-                                        </h3>
-                                        <p class="mt-2 text-sm text-white/85 line-clamp-2">
-                                            {{ $p['excerpt'] ?? '' }}
-                                        </p>
+                                {{-- EMBED IG (blockquote), TANPA aspect fixed --}}
+                                <div class="bg-black relative ig-min">
+                                    <div class="w-full">
+                                        <blockquote class="instagram-media !m-0 !p-0 w-full max-w-full"
+                                            data-instgrm-permalink="{{ $permalink }}" data-instgrm-version="14"
+                                            style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;padding:0;width:100%;max-width:100%;">
+                                        </blockquote>
                                     </div>
                                 </div>
-                            </a>
+
+                                {{-- gradient overlay biar teks kebaca --}}
+                                <div
+                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent">
+                                </div>
+
+                                {{-- badges --}}
+                                <div class="absolute top-3 left-4 text-[12px] font-medium text-white/90 z-10">
+                                    {{ $p['category'] ?? '' }}
+                                </div>
+                                <div class="absolute top-3 right-4 text-[12px] text-white/80 z-10">
+                                    {{ $p['date'] ?? '' }}
+                                </div>
+
+                                {{-- caption --}}
+                                <div class="absolute left-0 right-0 bottom-0 p-4 sm:p-5 text-white z-10">
+                                    <h3 class="text-xl sm:text-2xl font-semibold leading-snug">
+                                        {{ $p['title'] ?? '' }}
+                                    </h3>
+                                    @if (!empty($p['excerpt']))
+                                        <p class="mt-2 text-sm text-white/85 line-clamp-2">
+                                            {{ $p['excerpt'] }}
+                                        </p>
+                                    @endif
+                                </div>
+                            </div>
                         </article>
                     @endforeach
                 </div>
@@ -97,6 +109,7 @@
         </div>
     </div>
 
+    {{-- kecilin drama scrollbar & paksa embed full width --}}
     <style>
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
@@ -106,7 +119,39 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        .instagram-media {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        .instagram-media>div {
+            margin: 0 !important;
+        }
+
+        /* safety min-height supaya saat awal load nggak keliatan "setengah" */
+        .ig-min {
+            min-height: 520px;
+        }
     </style>
+
+    {{-- load script IG SEKALI, lalu process --}}
+    @once
+        <script>
+            (function ensureIGScript() {
+                if (window.__igEmbedLoaded) return;
+                var s = document.createElement('script');
+                s.async = true;
+                s.src = "https://www.instagram.com/embed.js";
+                s.onload = function() {
+                    window.__igEmbedLoaded = true;
+                    window.instgrm && window.instgrm.Embeds.process();
+                };
+                document.head.appendChild(s);
+            })
+            ();
+        </script>
+    @endonce
 
     {{-- Alpine controller --}}
     <script>
@@ -137,7 +182,11 @@
                         left: el.clientWidth,
                         behavior: 'smooth'
                     });
-                    this.activeDot = (this.activeDot + 1) % this.dots.length;
+                    this.activeDot = (this.activeDot + 1) % (this.dots.length || 1);
+                    // proses ulang embed biar tinggi pas setelah geser
+                    queueMicrotask(() => {
+                        window.instgrm && window.instgrm.Embeds && window.instgrm.Embeds.process();
+                    });
                 },
                 prev() {
                     const el = this.$refs.track;
@@ -145,7 +194,10 @@
                         left: -el.clientWidth,
                         behavior: 'smooth'
                     });
-                    this.activeDot = (this.activeDot - 1 + this.dots.length) % this.dots.length;
+                    this.activeDot = (this.activeDot - 1 + (this.dots.length || 1)) % (this.dots.length || 1);
+                    queueMicrotask(() => {
+                        window.instgrm && window.instgrm.Embeds && window.instgrm.Embeds.process();
+                    });
                 },
                 goTo(i) {
                     const el = this.$refs.track;
@@ -154,6 +206,9 @@
                         behavior: 'smooth'
                     });
                     this.activeDot = i;
+                    queueMicrotask(() => {
+                        window.instgrm && window.instgrm.Embeds && window.instgrm.Embeds.process();
+                    });
                 },
                 play() {
                     clearInterval(this.timer);
@@ -164,6 +219,10 @@
                 },
                 init() {
                     this.updateDots();
+                    // proses embed setelah render awal
+                    queueMicrotask(() => {
+                        window.instgrm && window.instgrm.Embeds && window.instgrm.Embeds.process();
+                    });
                     this.play();
                 },
             }
