@@ -15,6 +15,7 @@
 
 
     <x-sections.cluster-intro title="Lorem Ipsum dolor sit" />
+
     @php
         $sosmed = [
             [

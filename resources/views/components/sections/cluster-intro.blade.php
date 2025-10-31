@@ -2,7 +2,7 @@
     'eyebrow' => 'Why Morizono?',
     'titlee' => 'Why Morizono?',
     'desc' =>
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'Because home should feel like harmony, not chaos. Morizono brings together natural warmth, minimalist design, and thoughtful space planning so every corner breathes calm. It’s more than a house — it’s balance, crafted for those who want serenity without sacrificing sophistication.',
 ])
 
 <section id="clusters" class="bg-[#EFECDC]">
