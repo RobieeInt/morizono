@@ -1,9 +1,9 @@
 <x-layouts.site :title="'Morizono'">
     <x-sections.hero :background="asset('images/hero.webp')" :logo="asset('logo/logowhite.webp')" title="MORIZONO" tagline="A Home Where Life Begins and Grows"
         subtitle="Lorem ipsum dolor sit amet insectum lorem ipsum" :clusters="[
-            ['label' => 'Sumire', 'href' => '#clusters'],
-            ['label' => 'Ayame', 'href' => '#clusters'],
-            ['label' => 'Kaede', 'href' => '#clusters'],
+            ['label' => 'Sumire', 'href' => '#Sumire'],
+            ['label' => 'Ayame', 'href' => '#Ayame'],
+            ['label' => 'Kaede', 'href' => '#Kaede'],
         ]" ctaLabel="Book a tour"
         ctaHref="#book" />
 

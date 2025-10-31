@@ -5,7 +5,7 @@
 <section id="clusters" class="bg-[#EFECDC]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
         @foreach ($clusters as $idx => $c)
-            <div class="grid md:grid-cols-2 gap-8 items-start border-b-4 border-black py-8">
+            <div class="grid md:grid-cols-2 gap-8 items-start border-b-4 border-black py-8" id="{{ $c['name'] }}">
 
                 {{-- RIGHT (gambar) duluan pas mobile --}}
                 <div x-data="{
