@@ -62,7 +62,8 @@
                                 : null;
                         @endphp
 
-                        <article class="relative snap-start w-[86vw] shrink-0">
+                        <article
+                            class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
                             <div class="relative rounded-[10px] overflow-hidden shadow">
                                 {{-- overlay ke IG --}}
                                 <a href="{{ $permalink }}" target="_blank" rel="noopener"
@@ -142,7 +143,8 @@
                         : null;
                 @endphp
 
-                <article class="relative group">
+                <article
+                    class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
                     <div class="relative rounded-[10px] overflow-hidden shadow">
                         {{-- overlay klik ke IG --}}
                         <a href="{{ $permalink }}" target="_blank" rel="noopener" class="absolute inset-0 z-20"
@@ -260,6 +262,45 @@
                     }
                 }
             }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                // reveal animasi
+                const cards = document.querySelectorAll('.sosmed-card');
+
+                function revealCards() {
+                    cards.forEach((c) => {
+                        const r = c.getBoundingClientRect().top;
+                        if (r < window.innerHeight * 0.92) {
+                            c.classList.remove('opacity-0', 'translate-y-[50px]');
+                        }
+                    });
+                }
+
+                window.addEventListener('scroll', revealCards);
+                revealCards();
+
+
+                // MOBILE autoplay (bukan hover)
+                const iframes = document.querySelectorAll('.ytvid');
+
+                function playIfVisible() {
+                    iframes.forEach((iframe) => {
+                        const rect = iframe.getBoundingClientRect();
+                        const visible = rect.top >= 0 && rect.top < window.innerHeight * 0.8;
+                        const base = iframe.dataset.base;
+                        const id = iframe.dataset.vid;
+                        if (!base || !id) return;
+
+                        const src = base + (visible ? '&autoplay=1' : '&autoplay=0');
+                        if (iframe.src !== src) iframe.src = src;
+                    });
+                }
+
+                window.addEventListener('scroll', playIfVisible);
+                playIfVisible();
+            });
         </script>
     @endonce
 </section>
