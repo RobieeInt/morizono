@@ -6,7 +6,8 @@
     'posts' => [],
 ])
 
-<section id="updates" class="bg-[#EFECDC]">
+<section id="updates"
+    class="bg-[#EFECDC] updates-sec opacity-0 translate-y-[80px] transition-all duration-[1000ms] ease-out">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16" x-data="newsSlider({
         perPage: (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1))
     })" x-init="$watch('perPage', v => updateDots());
@@ -161,5 +162,20 @@
                 }
             }
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function revealUpdates() {
+                const sec = document.querySelector('.updates-sec');
+                if (!sec) return;
+                const r = sec.getBoundingClientRect().top;
+                if (r < window.innerHeight * .85) {
+                    sec.classList.remove('opacity-0', 'translate-y-[80px]');
+                    window.removeEventListener('scroll', revealUpdates);
+                }
+            }
+            window.addEventListener('scroll', revealUpdates);
+            revealUpdates();
+        });
     </script>
 </section>

@@ -5,7 +5,9 @@
 <section id="clusters" class="bg-[#EFECDC]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
         @foreach ($clusters as $idx => $c)
-            <div class="grid md:grid-cols-2 gap-8 items-start md:items-center border-b-4 border-black py-8"
+            <div class="cluster-item opacity-0 translate-y-[80px]
+    transition-all duration-[1300ms] ease-out
+    grid md:grid-cols-2 gap-8 items-start md:items-center border-b-4 border-black py-8"
                 id="{{ $c['name'] }}">
 
                 {{-- RIGHT (gambar) duluan pas mobile --}}
@@ -15,7 +17,7 @@
                     prev() { this.i = (this.i - 1 + this.imgs.length) % this.imgs.length },
                     next() { this.i = (this.i + 1) % this.imgs.length }
                 }" class="relative order-1 md:order-2">
-                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white aspect-[/4]">
+                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white aspect-[4/4]">
                         <template x-if="imgs.length">
                             <img :src="imgs[i]" alt="{{ $c['name'] }}" class="w-full h-full object-cover">
                         </template>
@@ -84,3 +86,21 @@
         @endforeach
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('.cluster-item');
+
+        function revealClusters() {
+            items.forEach((sec, i) => {
+                const r = sec.getBoundingClientRect().top;
+                if (r < window.innerHeight * 0.9) {
+                    sec.classList.remove('opacity-0', 'translate-y-[80px]');
+                    sec.style.transitionDelay = (i * 120) + "ms"; // delay dikit biar satu² naik
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealClusters);
+        revealClusters();
+    });
+</script>
