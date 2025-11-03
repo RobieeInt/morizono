@@ -1,17 +1,16 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route(\Illuminate\Support\Facades\Route::has('dashboard') ? 'dashboard' : 'landing') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
-                    </a>
-                </div>
+<nav x-data="{ open: false }" class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200 overflow-x-clip">
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+    <!-- Bar utama -->
+    <div class="w-full mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 overflow-x-clip">
+        <div class="flex items-center justify-between h-14 w-full overflow-x-clip">
+            <!-- Kiri: logo + links -->
+            <div class="flex items-center min-w-0 w-auto">
+                <a href="{{ route(\Illuminate\Support\Facades\Route::has('dashboard') ? 'dashboard' : 'landing') }}"
+                    class="shrink-0 inline-flex items-center">
+                    <x-application-logo class="block h-8 w-auto fill-current text-gray-800" />
+                </a>
+
+                <div class="hidden sm:flex sm:items-center sm:ms-8 gap-6">
                     @auth
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
@@ -24,32 +23,23 @@
                 </div>
             </div>
 
-            <!-- Right side -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <!-- Kanan desktop -->
+            <div class="hidden sm:flex items-center gap-4 min-w-0">
                 @auth
-                    <!-- Settings Dropdown -->
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button
-                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                <div>{{ Auth::user()->name }}</div>
-                                <div class="ms-1">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
+                                class="inline-flex items-center px-3 py-2 text-sm rounded-md text-gray-600 hover:text-gray-900 transition">
+                                <span class="truncate max-w-[12rem]">{{ Auth::user()->name }}</span>
+                                <svg class="ms-1 h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+                                        clip-rule="evenodd" />
+                                </svg>
                             </button>
                         </x-slot>
-
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
-                            </x-dropdown-link>
-
-                            <!-- Authentication -->
+                            <x-dropdown-link :href="route('profile.edit')">{{ __('Profile') }}</x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('logout')"
@@ -62,35 +52,34 @@
                 @endauth
 
                 @guest
-                    <!-- Guest links (desktop) -->
-                    <div class="flex items-center gap-3">
-                        <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900">Login</a>
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="text-sm text-gray-600 hover:text-gray-900">Register</a>
-                        @endif
-                    </div>
+                    <a href="{{ route('login') }}" class="text-sm text-gray-600 hover:text-gray-900">Login</a>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="text-sm text-gray-600 hover:text-gray-900">Register</a>
+                    @endif
                 @endguest
             </div>
 
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            <!-- Hamburger (TANPA margin negatif) -->
+            <div class="flex items-center sm:hidden">
+                <button @click="open = !open"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path x-show="!open" stroke-linecap="round" stroke-linejoin="round"
                             d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path x-show="open" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Responsive Navigation Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
+    <!-- Overlay gelap -->
+    <div x-show="open" x-transition.opacity class="sm:hidden fixed inset-0 z-40 bg-black/40" @click="open=false"></div>
+
+    <!-- Panel mobile: fixed overlay full width -->
+    <div x-show="open" x-transition
+        class="sm:hidden fixed top-14 inset-x-0 z-50 bg-white border-t border-gray-200 shadow-md w-full">
+        <div class="pt-2 pb-3 space-y-1 px-4">
             @auth
                 <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
@@ -102,19 +91,14 @@
             @endauth
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
+        <div class="border-t border-gray-200 px-4 py-3">
             @auth
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <div class="mb-3">
+                    <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
+                    <div class="text-sm text-gray-500 truncate">{{ Auth::user()->email }}</div>
                 </div>
-
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('profile.edit')">
-                        {{ __('Profile') }}
-                    </x-responsive-nav-link>
-
+                <div class="space-y-1">
+                    <x-responsive-nav-link :href="route('profile.edit')">{{ __('Profile') }}</x-responsive-nav-link>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <x-responsive-nav-link :href="route('logout')"
@@ -126,19 +110,14 @@
             @endauth
 
             @guest
-                <div class="px-4">
-                    <div class="font-medium text-base text-gray-800">Guest</div>
-                    <div class="font-medium text-sm text-gray-500">Silakan login untuk akses dashboard</div>
+                <div class="mb-3">
+                    <div class="text-base font-medium text-gray-800">Guest</div>
+                    <div class="text-sm text-gray-500">Silakan login untuk akses dashboard</div>
                 </div>
-
-                <div class="mt-3 space-y-1">
-                    <x-responsive-nav-link :href="route('login')">
-                        {{ __('Login') }}
-                    </x-responsive-nav-link>
+                <div class="space-y-1">
+                    <x-responsive-nav-link :href="route('login')">{{ __('Login') }}</x-responsive-nav-link>
                     @if (Route::has('register'))
-                        <x-responsive-nav-link :href="route('register')">
-                            {{ __('Register') }}
-                        </x-responsive-nav-link>
+                        <x-responsive-nav-link :href="route('register')">{{ __('Register') }}</x-responsive-nav-link>
                     @endif
                 </div>
             @endguest
