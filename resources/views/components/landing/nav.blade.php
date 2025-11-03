@@ -36,12 +36,16 @@
         <!-- mobile menu -->
         <div class="md:hidden pt-2 pb-3" x-show="open" x-transition>
             <ul class="space-y-1 text-sm">
-                <li><a href="#home" class="block rounded px-3 py-2 hover:bg-black/5">Home</a></li>
-                <li><a href="#about" class="block rounded px-3 py-2 hover:bg-black/5">About</a></li>
-                <li><a href="#clusters" class="block rounded px-3 py-2 hover:bg-black/5">Our Cluster</a></li>
-                <li><a href="#updates" class="block rounded px-3 py-2 hover:bg-black/5">Updates</a></li>
-                <li><a href="#contact" class="block rounded px-3 py-2 hover:bg-black/5">Contact</a></li>
-                <li><a href="#book"
+                <li><a href="{{ route('landing') }}" class="block rounded px-3 py-2 hover:bg-black/5">Home</a></li>
+                <li><a href="{{ route('landing') }}#about" class="block rounded px-3 py-2 hover:bg-black/5">About</a>
+                </li>
+                <li><a href="{{ route('landing') }}#clusters" class="block rounded px-3 py-2 hover:bg-black/5">Our
+                        Cluster</a></li>
+                <li><a href="{{ route('news.index') }}" class="block rounded px-3 py-2 hover:bg-black/5">Updates</a>
+                </li>
+                <li><a href="{{ route('landing') }}#contact"
+                        class="block rounded px-3 py-2 hover:bg-black/5">Contact</a></li>
+                <li><a href="{{ route('landing') }}#book"
                         class="block rounded px-3 py-2 bg-amber-300/80 hover:bg-amber-400 text-gray-900 font-semibold">Book
                         a tour</a></li>
             </ul>
