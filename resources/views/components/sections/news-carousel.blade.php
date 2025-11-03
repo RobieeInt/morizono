@@ -1,21 +1,28 @@
 @props([
     'title' => 'Latest News & Updates',
-    'subtitle' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+    'subtitle' => '',
     'seeAllUrl' => '#',
     // posts: array of [title, excerpt, category, date, image, url]
     'posts' => [],
 ])
 
 <section id="updates" class="bg-[#EFECDC]">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16" x-data="newsSlider({ perPage: (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1) })" x-init="$watch('perPage', v => updateDots());
-    window.addEventListener('resize', () => { perPage = (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1); });">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16" x-data="newsSlider({
+        perPage: (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1))
+    })" x-init="$watch('perPage', v => updateDots());
+    window.addEventListener('resize', () => {
+        perPage = (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1));
+        updateDots();
+    });">
 
         {{-- header --}}
         <div class="grid grid-cols-3 items-end mb-6 sm:mb-8">
             <div>
-                <h2 class="text-3xl sm:text-4xl font-light tracking-tight text-gray-900">{{ $title }}</h2>
+                <h2 class="text-3xl sm:text-4xl font-light tracking-tight text-gray-900 font-heading">
+                    {{ $title }}
+                </h2>
             </div>
-            <div class="text-center text-sm text-gray-600 hidden sm:block">
+            <div class="text-left text-sm text-gray-600 hidden sm:block ml-20">
                 {{ $subtitle }}
             </div>
             <div class="text-right">
@@ -24,15 +31,22 @@
         </div>
 
         {{-- slider --}}
-        <div class="relative">
-            {{-- buttons --}}
+        <div class="relative overflow-visible"> {{-- penting: biar tombol di luar gak kepotong --}}
+            {{-- buttons DI LUAR konten, bulat --}}
             <button type="button" @click="prev()" aria-label="Previous"
-                class="hidden sm:flex absolute -left-3 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-md w-9 h-9 items-center justify-center shadow">
-                ‹
+                class="hidden sm:grid place-items-center absolute -left-14 top-1/2 -translate-y-1/2 z-20
+               w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 6l-6 6 6 6" />
+                </svg>
             </button>
+
             <button type="button" @click="next()" aria-label="Next"
-                class="flex absolute -right-3 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white rounded-md w-10 h-10 items-center justify-center shadow">
-                ›
+                class="grid place-items-center absolute -right-14 top-1/2 -translate-y-1/2 z-20
+               w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 6l6 6-6 6" />
+                </svg>
             </button>
 
             {{-- track --}}
@@ -90,12 +104,12 @@
     {{-- tiny helper to hide scrollbar aesthetically --}}
     <style>
         .hide-scrollbar::-webkit-scrollbar {
-            display: none
+            display: none;
         }
 
         .hide-scrollbar {
             -ms-overflow-style: none;
-            scrollbar-width: none
+            scrollbar-width: none;
         }
     </style>
 
@@ -106,7 +120,6 @@
                 dots: [],
                 activeDot: 0,
                 updateDots() {
-                    // total pages = ceil(items / perPage)
                     const items = this.$refs.track?.querySelectorAll('article').length || 0;
                     const pages = Math.max(1, Math.ceil(items / this.perPage));
                     this.dots = Array.from({
@@ -116,7 +129,7 @@
                 },
                 onScroll() {
                     const el = this.$refs.track;
-                    const w = el.clientWidth;
+                    const w = el.clientWidth || 1;
                     this.activeDot = Math.round(el.scrollLeft / w);
                 },
                 next() {
@@ -125,7 +138,7 @@
                         left: el.clientWidth,
                         behavior: 'smooth'
                     });
-                    this.activeDot = Math.min(this.activeDot + 1, this.dots.length - 1);
+                    this.activeDot = Math.min(this.activeDot + 1, (this.dots.length - 1));
                 },
                 prev() {
                     const el = this.$refs.track;

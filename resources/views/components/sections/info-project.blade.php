@@ -20,11 +20,14 @@ Every space is carefully designed to bring balance and a sense of peace, the ide
 
             {{-- center copy --}}
             <div class="text-center md:px-6">
-                <div class="tracking-[0.25em] text-xs text-gray-700/80 mb-3">{{ $titleSmall }}</div>
-                <h2 class="text-3xl sm:text-2xl leading-snug font-light text-[#C8A767]">
-                    {{ $titlee }}
+                {{-- <div class="tracking-[0.25em] text-xs text-gray-700/80 mb-3"> {{ $titlee }}</div> --}}
+                <h2 class="text-3xl sm:text-2xl leading-snug font-light text-[#C8A767] font-heading">
+                    {{ $titleSmall }}
                 </h2>
-                <p class="mt-4 text-sm sm:text-base text-gray-700/90 leading-relaxed">
+                <p class="mt-4 text-sm sm:text-base text-gray-700/90 leading-relaxed font-sans">
+                    {{ $titlee }}
+                </p>
+                <p class="mt-4 text-sm sm:text-base text-gray-700/90 leading-relaxed font-sans">
                     {{ $desc }}
                 </p>
             </div>

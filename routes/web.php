@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+use App\Livewire\News\Index as NewsIndex;
+use App\Livewire\News\Show as NewsShow;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::view('/', 'landing')->name('landing');
+
+Route::get('/updates', NewsIndex::class)->name('news.index');
+Route::get('/updates/{news:slug}', NewsShow::class)->name('news.show');
 
 Route::middleware(['auth','verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::view('/', 'admin.dashboard')->name('dashboard');            // ringkasan

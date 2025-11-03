@@ -14,7 +14,7 @@
 
 
 
-    <x-sections.cluster-intro title="Lorem Ipsum dolor sit" />
+    {{-- <x-sections.cluster-intro title="Lorem Ipsum dolor sit" /> --}}
 
     @php
         $sosmed = [
@@ -23,32 +23,33 @@
                 'excerpt' => 'Kehangatan keluarga di hunian Morizono yang nyaman dan asri.',
                 'category' => 'Community',
                 'date' => '12 Oct 2025',
-                'embed' => 'https://www.instagram.com/reel/DQWDg2RE5ru/embed',
-                'url' => 'https://www.instagram.com/reel/DQWDg2RE5ru/',
+                'embed' => 'https://youtube.com/shorts/7EJpSeoYmLo',
+                'url' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/?igsh=dTNoZDhwMHBub3J3/',
             ],
             [
                 'title' => 'Suasana Lingkungan',
                 'excerpt' => 'Area hijau dan udara segar untuk gaya hidup sehat.',
                 'category' => 'Lifestyle',
                 'date' => '14 Oct 2025',
-                'embed' => 'https://www.instagram.com/reel/DQESNuHkwnl/embed',
-                'url' => 'https://www.instagram.com/reel/DQESNuHkwnl/',
+                'embed' => 'https://youtube.com/shorts/davOo8SI6Hw?si=xWnvd-2LShgF8NXq',
+                'url' => 'https://www.instagram.com/reel/DQESNuHkwnl/?igsh=dGV0ZXlrMG51bTBs/',
             ],
             [
                 'title' => 'Progress Pembangunan',
                 'excerpt' => 'Pantau terus progres pembangunan cluster Morizono.',
                 'category' => 'Update',
                 'date' => '16 Oct 2025',
-                'embed' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/embed',
-                'url' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/',
+                'embed' => 'https://youtube.com/shorts/Xyr9EDGu5jY',
+                'url' => 'https://www.instagram.com/reel/DQWDg2RE5ru/?igsh=MWQya2t5Y3RtZWJrbQ==/',
             ],
             [
                 'title' => 'Event Keluarga',
                 'excerpt' => 'Kebersamaan di acara keluarga Morizono Residence.',
                 'category' => 'Event',
                 'date' => '17 Oct 2025',
-                'embed' => 'https://www.instagram.com/reel/DPAgt1YE8s8/embed',
-                'url' => 'https://www.instagram.com/reel/DPAgt1YE8s8/',
+                'embed' => 'https://youtube.com/shorts/7EJpSeoYmLo',
+                'url' =>
+                    'https://www.instagram.com/reel/DNNUZkhT_QG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
             ],
         ];
     @endphp
@@ -145,7 +146,7 @@
 
     <x-sections.cluster-list :clusters="$clusters" />
 
-    @php
+    {{-- @php
         $posts = [
             [
                 'title' => 'Lorem ipsum dolor sit amet insectum',
@@ -177,7 +178,25 @@
         ];
     @endphp
 
-    <x-sections.news-carousel :posts="$posts" seeAllUrl="#" />
+    <x-sections.news-carousel :posts="$posts" seeAllUrl="#" /> --}}
+    @php
+        $posts = \App\Models\News::latest('published_at')
+            ->take(6)
+            ->get()
+            ->map(function ($n) {
+                return [
+                    'title' => $n->title,
+                    'excerpt' => $n->excerpt,
+                    'category' => $n->category,
+                    'date' => optional($n->published_at)->format('d M Y'),
+                    'image' => $n->image,
+                    'url' => route('news.show', $n), // <-- ke Livewire Show
+                ];
+            })
+            ->toArray();
+    @endphp
+
+    <x-sections.news-carousel :posts="$posts" seeAllUrl="{{ route('news.index') }}" />
 
     <x-sections.contact-map :title="'How can we help you? Write us a message'" :map-query="'Jl. Cinangka Raya, Curug, Bojongsari, Depok, Jawa Barat 16517'" />
 

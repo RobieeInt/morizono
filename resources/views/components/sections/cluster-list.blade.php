@@ -5,7 +5,8 @@
 <section id="clusters" class="bg-[#EFECDC]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10">
         @foreach ($clusters as $idx => $c)
-            <div class="grid md:grid-cols-2 gap-8 items-start border-b-4 border-black py-8" id="{{ $c['name'] }}">
+            <div class="grid md:grid-cols-2 gap-8 items-start md:items-center border-b-4 border-black py-8"
+                id="{{ $c['name'] }}">
 
                 {{-- RIGHT (gambar) duluan pas mobile --}}
                 <div x-data="{
@@ -14,10 +15,9 @@
                     prev() { this.i = (this.i - 1 + this.imgs.length) % this.imgs.length },
                     next() { this.i = (this.i + 1) % this.imgs.length }
                 }" class="relative order-1 md:order-2">
-                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white">
+                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white aspect-[/4]">
                         <template x-if="imgs.length">
-                            <img :src="imgs[i]" alt="{{ $c['name'] }}"
-                                class="w-full h-[260px] sm:h-[300px] object-cover">
+                            <img :src="imgs[i]" alt="{{ $c['name'] }}" class="w-full h-full object-cover">
                         </template>
                     </div>
 
@@ -41,9 +41,9 @@
                 </div>
 
                 {{-- LEFT (info) di bawah pas mobile --}}
-                <div class="order-2 md:order-1">
+                <div class="order-2 md:order-1 md:flex md:flex-col md:justify-center md:h-full md:self-center">
                     <div class="flex items-start justify-between">
-                        <h3 class="text-2xl sm:text-3xl font-light text-[#C8A767]">{{ $c['name'] }}</h3>
+                        <h3 class="text-2xl sm:text-3xl font-light text-[#C8A767] font-heading">{{ $c['name'] }}</h3>
                         <a href="{{ $c['tourUrl'] ?? '#book' }}"
                             class="rounded bg-amber-300 hover:bg-amber-400 text-gray-900 text-xs sm:text-sm font-semibold px-3 py-2 transition">
                             Schedule a tour

@@ -9,10 +9,10 @@
 
             <!-- center: links (desktop) -->
             <ul class="hidden md:flex items-center gap-8 text-sm text-gray-800">
-                <li><a href="#home" class="hover:text-gray-900">Home</a></li>
+                <li><a href="{{ route('landing') }}" class="hover:text-gray-900">Home</a></li>
                 <li><a href="#about" class="hover:text-gray-900">About</a></li>
                 <li><a href="#clusters" class="hover:text-gray-900">Our Cluster</a></li>
-                <li><a href="#updates" class="hover:text-gray-900">Updates</a></li>
+                <li><a href="{{ route('news.index') }}" class="hover:text-gray-900">Updates</a></li>
                 <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
             </ul>
 
