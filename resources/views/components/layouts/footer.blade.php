@@ -13,15 +13,15 @@
             {{-- Brand + copyrights (span 2 on lg) --}}
             <div class="col-span-2">
                 <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono"
-                    class="block w-full h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
-
+                    class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
+                {{--
                 <img src="{{ asset('logo/footerph.webp') }}" alt="Sumitomo Forestry"
-                    class="block w-full h-auto sm:w-auto sm:h-12 mb-6 opacity-90 object-contain">
+                    class="block w-full h-auto sm:w-auto sm:h-12 mb-6 opacity-90 object-contain"> --}}
 
                 <p class="text-xs leading-6 text-white/70">
-                    Copyright © {{ date('Y') }}<br>
-                    PT Graha Perdana Indah.<br>
-                    All Rights Reserved.<br>
+                    Copyright © {{ date('Y') }}
+                    PT Graha Perdana Indah.
+                    All Rights Reserved.
                     By Reconext
                 </p>
             </div>
