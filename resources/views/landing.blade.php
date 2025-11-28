@@ -4,7 +4,7 @@
             ['label' => 'Sumire', 'href' => '#Sumire'],
             ['label' => 'Ayame', 'href' => '#Ayame'],
             ['label' => 'Kaede', 'href' => '#Kaede'],
-            ['label' => 'ShopHouse', 'href' => '#shophouse'], // <— ini tambahan
+            ['label' => 'Shop House', 'href' => '#Shop House'], // <— ini tambahan
         ]" ctaLabel="Book a tour"
         ctaHref="#book" />
 
