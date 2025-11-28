@@ -1,9 +1,10 @@
 <x-layouts.site :title="'Morizono'">
-    <x-sections.hero :background="asset('images/hero.webp')" :logo="asset('logo/logowhite.webp')" title="MORIZONO" tagline="A Home Where Life Begins and Grows"
+    <x-sections.hero :background="asset('images/hero.webp')" :logo="asset('logo/logowhite.webp')" title="MORIZONO" tagline="The Art of Japanese Living"
         subtitle="Lorem ipsum dolor sit amet insectum lorem ipsum" :clusters="[
             ['label' => 'Sumire', 'href' => '#Sumire'],
             ['label' => 'Ayame', 'href' => '#Ayame'],
             ['label' => 'Kaede', 'href' => '#Kaede'],
+            ['label' => 'ShopHouse', 'href' => '#shophouse'], // <— ini tambahan
         ]" ctaLabel="Book a tour"
         ctaHref="#book" />
 
@@ -55,6 +56,31 @@
     @endphp
 
     <x-sections.sosmed-carousel :sosmed="$sosmed" seeAllUrl="#" />
+
+    <x-sections.progress-video title="Progress Morizono"
+        subtitle="A short look at how Morizono Japanese Living is being developed step by step" :video-src="asset('video/progress.mp4')" />
+
+    <x-sections.usp-resident :items="[
+        ['icon' => asset('icons/shophouse.svg'), 'label' => 'Shophouse'],
+        ['icon' => asset('icons/clubhouse.svg'), 'label' => 'Clubhouse'],
+        ['icon' => asset('icons/mushola.svg'), 'label' => 'Mushola'],
+        ['icon' => asset('icons/security.svg'), 'label' => '24H Security'],
+        ['icon' => asset('icons/smarthome.svg'), 'label' => 'Smart Home System'],
+        ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'CCTV Monitoring'],
+    ]" />
+
+    <x-sections.usp-home :items="[
+        ['icon' => asset('icons/solarpanel.svg'), 'label' => 'Solar Panel'],
+        ['icon' => asset('icons/smartdoor.svg'), 'label' => 'Smart Door Lock'],
+        ['icon' => asset('icons/cctvoutdoor.svg'), 'label' => 'CCTV Outdoor'],
+        ['icon' => asset('icons/smartlightswitch.svg'), 'label' => 'Smart Light Switch'],
+        ['icon' => asset('icons/smokesensor.svg'), 'label' => 'Smoke Sensor'],
+        ['icon' => asset('icons/voiceassistant.svg'), 'label' => 'Voice Assistant'],
+        ['icon' => asset('icons/smartcontactsensor.svg'), 'label' => 'Smart Contact Sensor'],
+        ['icon' => asset('icons/doorbell.svg'), 'label' => 'Smart Doorbell'],
+        ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'Smart CCTV Monitoring'],
+        ['icon' => asset('icons/motionsensor.svg'), 'label' => 'Smart Motion Sensor'],
+    ]" />
 
     @php
         $clusters = [
@@ -141,10 +167,75 @@
                     asset('images/kaede/kaede8.webp'),
                 ],
             ],
+            [
+                'name' => 'Shop House',
+                'tourUrl' => '#book',
+                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
+                'items' => [
+                    ['title' => 'House Structure', 'detail' => ['Foot Plate + Tie Beam', 'Cast Concrete K-250']],
+                    ['title' => 'House Interior', 'detail' => 'Dummy interior spec…'],
+                    ['title' => 'House Exterior', 'detail' => 'Dummy exterior spec…'],
+                    ['title' => 'House Flooring', 'detail' => ['60x60 tile', 'Lantai kamar kayu laminated']],
+                ],
+                'images' => [
+                    asset('images/shophouse/shophouse1.webp'),
+                    asset('images/shophouse/shophouse2.webp'),
+                    asset('images/shophouse/shophouse3.webp'),
+                    asset('images/shophouse/shophouse4.webp'),
+                ],
+            ],
         ];
     @endphp
 
     <x-sections.cluster-list :clusters="$clusters" />
+
+    @php
+        $surroundGroups = [
+            '0' => [
+                'label' => '0 Min',
+                'image' => asset('images/map/0min.webp'),
+                'items' => [['name' => 'Morizono', 'category' => 'Residential']],
+            ],
+            '1' => [
+                'label' => '1 Min',
+                'image' => asset('images/map/1min.webp'),
+                'items' => [
+                    ['name' => 'The Park Sawangan', 'category' => 'Shopping Center'],
+                    ['name' => 'Indogrosir', 'category' => 'Grocery Mart'],
+                    // dst...
+                ],
+            ],
+            '5' => [
+                'label' => '5 MinS',
+                'image' => asset('images/map/5min.webp'),
+                'items' => [
+                    ['name' => 'Pamulang Toll Gate', 'category' => 'Transportation'],
+                    ['name' => 'Hyfresh', 'category' => 'Grocery Mart'],
+                    // dst...
+                ],
+            ],
+            '10' => [
+                'label' => '10 MinS',
+                'image' => asset('images/map/10min.webp'),
+                'items' => [
+                    ['name' => 'Hoka Hoka Bento', 'category' => 'Food'],
+                    ['name' => 'Brawijaya Hospital', 'category' => 'Health'],
+                    // dst...
+                ],
+            ],
+            '30' => [
+                'label' => '30 MinS',
+                'image' => asset('images/map/30min.webp'),
+                'items' => [
+                    ['name' => 'Pondok Indah Mall', 'category' => 'Shopping Center'],
+                    ['name' => 'Bandara Soekarno Hatta', 'category' => 'Transportation'],
+                    // dst...
+                ],
+            ],
+        ];
+    @endphp
+
+    <x-sections.surroundings :groups="$surroundGroups" />
 
     {{-- @php
         $posts = [

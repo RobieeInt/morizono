@@ -57,7 +57,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="{{ route('landing') }}#home" class="hover:underline">Home</a></li>
                         <li><a href="{{ route('landing') }}#about" class="hover:underline">About</a></li>
-                        <li><a href="{{ route('landing') }}#clusters" class="hover:underline">Our Cluster</a></li>
+                        <li><a href="{{ route('landing') }}#clusters" class="hover:underline">Our Unit Types</a></li>
                         <li><a href="{{ route('landing') }}#updates" class="hover:underline">Update</a></li>
                         <li><a href="{{ route('landing') }}#contact" class="hover:underline">Contact</a></li>
                     </ul>
