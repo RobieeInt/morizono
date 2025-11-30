@@ -191,11 +191,11 @@
 
     @php
         $surroundGroups = [
-            '0' => [
-                'label' => '0 Min',
-                'image' => asset('images/map/0min.webp'),
-                'items' => [['name' => 'Morizono', 'category' => 'Residential']],
-            ],
+            // '0' => [
+            //     'label' => '0 Min',
+            //     'image' => asset('images/map/0min.webp'),
+            //     'items' => [['name' => 'Morizono', 'category' => 'Residential']],
+            // ],
             '1' => [
                 'label' => '1 Min',
                 'image' => asset('images/map/1min.webp'),
@@ -207,7 +207,7 @@
                 ],
             ],
             '5' => [
-                'label' => '5 MinS',
+                'label' => '5 Mins',
                 'image' => asset('images/map/5min.webp'),
                 'items' => [
                     ['name' => 'Pamulang Toll Gate', 'category' => 'Transportation'],
@@ -221,7 +221,7 @@
                 ],
             ],
             '10' => [
-                'label' => '10 MinS',
+                'label' => '10 Mins',
                 'image' => asset('images/map/10min.webp'),
                 'items' => [
                     ['name' => 'Sawangan Toll Gate', 'category' => 'Transportation'],
@@ -233,7 +233,7 @@
                 ],
             ],
             '30' => [
-                'label' => '30 MinS',
+                'label' => '30 Mins',
                 'image' => asset('images/map/30min.webp'),
                 'items' => [
                     ['name' => 'Pondok Indah Hospital', 'category' => 'Health'],
