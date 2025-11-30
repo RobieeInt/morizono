@@ -105,7 +105,7 @@
                 </div>
             @endif
 
-            <img src="{{ asset('logo/developed.webp') }}" alt="Morizono"
+            <img src="{{ asset('logo/developed2.webp') }}" alt="Morizono"
                 class="w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px] opacity-95 mt-20" />
         </div>
     </div>

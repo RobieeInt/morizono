@@ -22,7 +22,7 @@
             </div>
 
             {{-- RIGHT: MAP PANEL --}}
-            <div class="h-full">
+            {{-- <div class="h-full">
                 <div class="rounded-md overflow-hidden h-full flex flex-col">
                     <iframe title="Morizono Location" class="w-full flex-1 min-h-[420px]" style="border:0"
                         loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -40,6 +40,13 @@
                             </svg>
                         </a>
                     </div>
+                </div>
+            </div> --}}
+            {{-- RIGHT: IMAGE PANEL --}}
+            <div class="h-full">
+                <div class="rounded-md overflow-hidden h-full">
+                    <img src="{{ asset('images/about/about1.webp') }}" alt="Morizono Office"
+                        class="w-full h-full object-cover">
                 </div>
             </div>
 

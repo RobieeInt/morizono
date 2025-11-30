@@ -202,7 +202,8 @@
                 'items' => [
                     ['name' => 'The Park Sawangan', 'category' => 'Shopping Center'],
                     ['name' => 'Indogrosir', 'category' => 'Grocery Mart'],
-                    // dst...
+                    ['name' => 'KFC', 'category' => 'Food'],
+                    ['name' => 'Solaria', 'category' => 'Food'],
                 ],
             ],
             '5' => [
@@ -211,6 +212,11 @@
                 'items' => [
                     ['name' => 'Pamulang Toll Gate', 'category' => 'Transportation'],
                     ['name' => 'Hyfresh', 'category' => 'Grocery Mart'],
+                    ['name' => 'Burger King', 'category' => 'Food'],
+                    ['name' => 'Domino Pizza', 'category' => 'Food'],
+                    ['name' => 'Hoka Hoka Bento', 'category' => 'Food'],
+                    ['name' => 'Brawijaya Hospital', 'category' => 'Health'],
+                    ['name' => 'Commercial and Banking Center', 'category' => 'Financial'],
                     // dst...
                 ],
             ],
@@ -218,8 +224,11 @@
                 'label' => '10 MinS',
                 'image' => asset('images/map/10min.webp'),
                 'items' => [
-                    ['name' => 'Hoka Hoka Bento', 'category' => 'Food'],
-                    ['name' => 'Brawijaya Hospital', 'category' => 'Health'],
+                    ['name' => 'Sawangan Toll Gate', 'category' => 'Transportation'],
+                    ['name' => 'PPD Transjakarta Ciputat', 'category' => 'Transportation'],
+                    ['name' => 'Kharisma Bangsa Global School', 'category' => 'Education'],
+                    ['name' => 'Mitra Keluarga Hospital ', 'category' => 'Health'],
+                    ['name' => 'MRT Lebak Bulus', 'category' => 'Transportation'],
                     // dst...
                 ],
             ],
@@ -227,6 +236,7 @@
                 'label' => '30 MinS',
                 'image' => asset('images/map/30min.webp'),
                 'items' => [
+                    ['name' => 'Pondok Indah Hospital', 'category' => 'Health'],
                     ['name' => 'Pondok Indah Mall', 'category' => 'Shopping Center'],
                     ['name' => 'Bandara Soekarno Hatta', 'category' => 'Transportation'],
                     // dst...

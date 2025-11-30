@@ -14,7 +14,7 @@
             <div class="col-span-2">
                 <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono"
                     class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
-                <img src="{{ asset('logo/developed.webp') }}" alt="Morizono"
+                <img src="{{ asset('logo/developed2.webp') }}" alt="Morizono"
                     class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
                 {{--
                 <img src="{{ asset('logo/footerph.webp') }}" alt="Sumitomo Forestry"
