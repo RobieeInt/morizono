@@ -17,18 +17,24 @@
                     prev() { this.i = (this.i - 1 + this.imgs.length) % this.imgs.length },
                     next() { this.i = (this.i + 1) % this.imgs.length }
                 }" class="relative order-1 md:order-2">
-                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white aspect-[4/4]">
+                    {{-- wrapper gambar: klik kiri = prev, kanan = next --}}
+                    <div class="rounded-[18px] overflow-hidden shadow-sm bg-white aspect-[4/4] cursor-pointer"
+                        @click="
+            const w = $el.clientWidth;
+            const x = $event.offsetX;
+            if (x < w / 2) { prev() } else { next() }
+         ">
                         <template x-if="imgs.length">
                             <img :src="imgs[i]" alt="{{ $c['name'] }}" class="w-full h-full object-cover">
                         </template>
                     </div>
 
                     {{-- arrows --}}
-                    <button @click="prev"
+                    <button @click.stop="prev"
                         class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-8 h-8 grid place-items-center shadow">
                         ‹
                     </button>
-                    <button @click="next"
+                    <button @click.stop="next"
                         class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white rounded-full w-8 h-8 grid place-items-center shadow">
                         ›
                     </button>

@@ -178,10 +178,10 @@
                     ['title' => 'House Flooring', 'detail' => ['60x60 tile', 'Lantai kamar kayu laminated']],
                 ],
                 'images' => [
-                    asset('images/shophouse/shophouse1.webp'),
-                    asset('images/shophouse/shophouse2.webp'),
                     asset('images/shophouse/shophouse3.webp'),
+                    asset('images/shophouse/shophouse1.webp'),
                     asset('images/shophouse/shophouse4.webp'),
+                    asset('images/shophouse/shophouse2.webp'),
                 ],
             ],
         ];
