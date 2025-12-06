@@ -6,7 +6,7 @@
             ['label' => 'Kaede', 'href' => '#Kaede'],
             ['label' => 'Shop House', 'href' => '#Shop House'], // <— ini tambahan
         ]" ctaLabel="Book a tour"
-        ctaHref="#book" />
+        ctaHref="#contact" />
 
 
 
@@ -90,7 +90,7 @@
         $clusters = [
             [
                 'name' => 'Sumire',
-                'tourUrl' => '#book',
+                'tourUrl' => '#contact',
                 'specs' => [
                     '6×14',
                     'LT 84',
@@ -147,7 +147,7 @@
             ],
             [
                 'name' => 'Ayame',
-                'tourUrl' => '#book',
+                'tourUrl' => '#contact',
                 'specs' => [
                     '7×14',
                     'LT 98',
@@ -197,7 +197,7 @@
             ],
             [
                 'name' => 'Kaede',
-                'tourUrl' => '#book',
+                'tourUrl' => '#contact',
                 'specs' => [
                     '8×14',
                     'LT 112',
@@ -247,7 +247,7 @@
             ],
             [
                 'name' => 'Shop House',
-                'tourUrl' => '#book',
+                'tourUrl' => '#contact',
                 'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
                 'items' => [
                     ['title' => 'House Structure', 'detail' => ['Foot Plate + Tie Beam', 'Cast Concrete K-250']],
