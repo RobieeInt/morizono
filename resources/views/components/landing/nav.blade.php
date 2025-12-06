@@ -11,14 +11,14 @@
             <ul class="hidden md:flex items-center gap-8 text-sm text-gray-800">
                 <li><a href="{{ route('landing') }}" class="hover:text-gray-900">Home</a></li>
                 <li><a href="#about" class="hover:text-gray-900">About</a></li>
-                <li><a href="#clusters" class="hover:text-gray-900">Our Unit Types</a></li>
+                <li><a href="#Sumire" class="hover:text-gray-900">Our Unit Types</a></li>
                 <li><a href="{{ route('news.index') }}" class="hover:text-gray-900">Updates</a></li>
                 <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
             </ul>
 
             <!-- right: CTA + burger -->
             <div class="flex items-center gap-3">
-                <a href="#book"
+                <a href="#contact"
                     class="hidden sm:inline-flex rounded-full bg-amber-300 px-3.5 py-2 text-sm font-semibold text-gray-900 hover:bg-amber-400 transition">
                     Book a tour
                 </a>

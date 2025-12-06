@@ -48,7 +48,9 @@
             <div>
                 <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">Opening Hours</div>
                 <div class="text-sm leading-6">
-                    {{ $hours_days }} <span class="opacity-50">|</span> {{ $hours_time }}
+                    {{ $hours_days }} <span class="opacity-50">
+                        <br>
+                    </span> {{ $hours_time }}
                 </div>
             </div>
 

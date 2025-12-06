@@ -20,44 +20,47 @@
     @php
         $sosmed = [
             [
-                'title' => 'Kegiatan di Morizono',
-                'excerpt' => 'Kehangatan keluarga di hunian Morizono yang nyaman dan asri.',
-                'category' => 'Community',
+                'title' => 'Product Specification',
+                'excerpt' => 'Detail spesifikasi rumah di Morizono.',
+                'category' => 'Specification',
                 'date' => '12 Oct 2025',
-                'embed' => 'https://youtube.com/shorts/7EJpSeoYmLo',
-                'url' => 'https://www.instagram.com/reel/DPD7MmGj8iQ/?igsh=dTNoZDhwMHBub3J3/',
+                'embed' => 'https://youtube.com/shorts/na38ndKgfFU?feature=share',
+                'url' =>
+                    'https://www.instagram.com/reel/DPD7MmGj8iQ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
             ],
             [
-                'title' => 'Suasana Lingkungan',
+                'title' => 'Suasana',
                 'excerpt' => 'Area hijau dan udara segar untuk gaya hidup sehat.',
                 'category' => 'Lifestyle',
                 'date' => '14 Oct 2025',
-                'embed' => 'https://youtube.com/shorts/davOo8SI6Hw?si=xWnvd-2LShgF8NXq',
-                'url' => 'https://www.instagram.com/reel/DQESNuHkwnl/?igsh=dGV0ZXlrMG51bTBs/',
+                'embed' => 'https://youtube.com/shorts/sqls_sBSko8?feature=share',
+                'url' =>
+                    'https://www.instagram.com/reel/DK1kpfmTyKe/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
             ],
             [
-                'title' => 'Progress Pembangunan',
-                'excerpt' => 'Pantau terus progres pembangunan cluster Morizono.',
-                'category' => 'Update',
+                'title' => 'Testimoni',
+                'excerpt' => 'Dengar langsung dari penghuni Morizono tentang pengalaman mereka.',
+                'category' => 'Testimonial',
                 'date' => '16 Oct 2025',
-                'embed' => 'https://youtube.com/shorts/Xyr9EDGu5jY',
-                'url' => 'https://www.instagram.com/reel/DQWDg2RE5ru/?igsh=MWQya2t5Y3RtZWJrbQ==/',
+                'embed' => 'https://youtube.com/shorts/xXPfO2JVd4c?feature=share',
+                'url' =>
+                    'https://www.instagram.com/reel/DQanVHzk1b1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
             ],
             [
-                'title' => 'Event Keluarga',
+                'title' => 'Event',
                 'excerpt' => 'Kebersamaan di acara keluarga Morizono Residence.',
                 'category' => 'Event',
                 'date' => '17 Oct 2025',
-                'embed' => 'https://youtube.com/shorts/7EJpSeoYmLo',
+                'embed' => 'https://youtube.com/shorts/LRcCIOxdOYE?feature=share',
                 'url' =>
-                    'https://www.instagram.com/reel/DNNUZkhT_QG/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
+                    'https://www.instagram.com/reel/DLBlcQBzvL6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==/',
             ],
         ];
     @endphp
 
     <x-sections.sosmed-carousel :sosmed="$sosmed" seeAllUrl="#" />
 
-    <x-sections.progress-video title="Progress Morizono"
+    <x-sections.progress-video title="Morizono Development Progress"
         subtitle="A short look at how Morizono Japanese Living is being developed step by step" :video-src="asset('video/progress.mp4')" />
 
     <x-sections.usp-resident :items="[
@@ -67,18 +70,19 @@
         ['icon' => asset('icons/security.svg'), 'label' => '24H Security'],
         ['icon' => asset('icons/smarthome.svg'), 'label' => 'Smart Home System'],
         ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'CCTV Monitoring'],
+        ['icon' => asset('icons/playground.svg'), 'label' => 'Children’s Playground'],
     ]" />
 
     <x-sections.usp-home :items="[
         ['icon' => asset('icons/solarpanel.svg'), 'label' => 'Solar Panel'],
         ['icon' => asset('icons/smartdoor.svg'), 'label' => 'Smart Door Lock'],
-        ['icon' => asset('icons/cctvoutdoor.svg'), 'label' => 'CCTV Outdoor'],
+        ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'Smart CCTV Indoor'],
+        ['icon' => asset('icons/cctvoutdoor.svg'), 'label' => 'Smart CCTV Outdoor'],
         ['icon' => asset('icons/smartlightswitch.svg'), 'label' => 'Smart Light Switch'],
         ['icon' => asset('icons/smokesensor.svg'), 'label' => 'Smoke Sensor'],
         ['icon' => asset('icons/voiceassistant.svg'), 'label' => 'Voice Assistant'],
-        ['icon' => asset('icons/smartcontactsensor.svg'), 'label' => 'Smart Contact Sensor'],
+        // ['icon' => asset('icons/smartcontactsensor.svg'), 'label' => 'Smart Contact Sensor'],
         ['icon' => asset('icons/doorbell.svg'), 'label' => 'Smart Doorbell'],
-        ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'Smart CCTV Monitoring'],
         ['icon' => asset('icons/motionsensor.svg'), 'label' => 'Smart Motion Sensor'],
     ]" />
 
@@ -87,53 +91,100 @@
             [
                 'name' => 'Sumire',
                 'tourUrl' => '#book',
-                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
+                'specs' => [
+                    '6×14',
+                    'LT 84',
+                    'LB 88',
+                    '2200 Watt',
+                    '2 Floor → Storey',
+                    '3 Bedroom',
+                    '2 Bathroom',
+                    '2 Carport',
+                ],
                 'items' => [
                     [
                         'title' => 'House Structure',
                         'detail' => [
-                            'Foundation: Foot Plate + Pancang',
+                            'Foundation: Foot Plate + Pancang → Minipiles',
                             'Structure: Cast Concrete K-250',
-                            'Wall: Textured Paint, Conwood',
+                            'Wall: Textured Paint, Conwood No conwood in T6 new layout only in T7 & T8 and also the content is misplaced wall finish is more suitable in house exterior section rather than in house structure section.
+                        if we want to mention about wall in house structure better use “Red Brick, Light Brick”
+                        ',
                         ],
                     ],
                     [
                         'title' => 'House Interior',
-                        'detail' => 'Finishing material high quality, sanitary set, kitchen sink, dst (dummy).',
+                        'detail' => [
+                            'Ceiling: Gypsum Board ',
+                            'Kitchen: Kitchen Sink, Concrete Table + HT 60x60, Grease Trap',
+                            'Door: Engineering Door',
+                            'Window: YKK Aluminium ',
+                            'Sanitary : TOTO',
+                        ],
                     ],
                     [
                         'title' => 'House Exterior',
-                        'detail' => ['Kusen Aluminium', 'Canopy optional', 'Paving block carport'],
+                        'detail' => ['Roof: Flat Concrete, UPVC Roof', 'Carport: Alderon Roof, Granroof YKK'],
                     ],
                     [
                         'title' => 'House Flooring',
                         'detail' => [
-                            'Living/Dining: Homogeneous Tile 60x60',
-                            'Bedroom: Laminated Wood',
-                            'Bathroom: Anti-slip tile',
+                            'Main: HT 60x60',
+                            'Terrace & Balcony HT 60x60',
+                            'Bathroom: HT 60x60',
+                            'Wall: HT 60x60',
+                            'Carport : Ceramic Tile 40x40',
                         ],
                     ],
                 ],
                 'images' => [
                     asset('images/sumire/sumire1.webp'),
                     asset('images/sumire/sumire2.webp'),
-                    asset('images/sumire/sumire3.webp'),
-                    asset('images/sumire/sumire4.webp'),
-                    asset('images/sumire/sumire5.webp'),
+                    // asset('images/sumire/sumire3.webp'),
+                    // asset('images/sumire/sumire4.webp'),
+                    // asset('images/sumire/sumire5.webp'),
                 ],
             ],
             [
                 'name' => 'Ayame',
                 'tourUrl' => '#book',
-                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
+                'specs' => [
+                    '7×14',
+                    'LT 98',
+                    'LB 109',
+                    '2200 Watt',
+                    '2 Floors',
+                    '3 Bedrooms',
+                    '2 Bathroom',
+                    '2 Carport',
+                ],
                 'items' => [
                     [
                         'title' => 'House Structure',
-                        'detail' => ['Foundation: Foot Plate', 'Structure: Cast Concrete K-250'],
+                        'detail' => [
+                            'Foundation: Foot Plate + Pancang',
+                            'Structure: Cast Concrete Quality K-250',
+                            'Wall: Plastered Brick, Paint Texture & Conwood',
+                        ],
                     ],
-                    ['title' => 'House Interior', 'detail' => 'Dummy interior spec…'],
-                    ['title' => 'House Exterior', 'detail' => ['Cat Weatherproof', 'Taman depan minimalis']],
-                    ['title' => 'House Flooring', 'detail' => ['Homogeneous Tile 60x60']],
+                    [
+                        'title' => 'House Interior',
+                        'detail' => [
+                            'Ceiling: Gypsum Board',
+                            'Kitchen: Aluminum Sink, Ceramic-coated Concrete Table, Grease Trap',
+                            'Door: Engineering Door',
+                            'Window: YKK Aluminum',
+                            'Bathroom: Toto',
+                        ],
+                    ],
+                    [
+                        'title' => 'House Exterior',
+                        'detail' => ['Roof: Flat Concrete', 'Carport: Alderson Roof, Granroof YKK'],
+                    ],
+                    [
+                        'title' => 'House Flooring',
+                        'detail' => ['Main: HT 60×60', 'Terrace: HT 40×40', 'Bathroom: HT 60×60', 'Wall: HT 60×60'],
+                    ],
                 ],
                 'images' => [
                     asset('images/ayame/ayame1.webp'),
@@ -142,19 +193,48 @@
                     asset('images/ayame/ayame4.webp'),
                     asset('images/ayame/ayame5.webp'),
                     asset('images/ayame/ayame6.webp'),
-                    asset('images/ayame/ayame7.webp'),
-                    asset('images/ayame/ayame8.webp'),
                 ],
             ],
             [
                 'name' => 'Kaede',
                 'tourUrl' => '#book',
-                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
+                'specs' => [
+                    '8×14',
+                    'LT 112',
+                    'LB 129',
+                    '2200 Watt',
+                    '2 Floors',
+                    '3 Bedrooms',
+                    '2 Bathroom',
+                    '2 Carport',
+                ],
                 'items' => [
-                    ['title' => 'House Structure', 'detail' => ['Foot Plate + Tie Beam', 'Cast Concrete K-250']],
-                    ['title' => 'House Interior', 'detail' => 'Dummy interior spec…'],
-                    ['title' => 'House Exterior', 'detail' => 'Dummy exterior spec…'],
-                    ['title' => 'House Flooring', 'detail' => ['60x60 tile', 'Lantai kamar kayu laminated']],
+                    [
+                        'title' => 'House Structure',
+                        'detail' => [
+                            'Foundation: Foot Plate + Pancang',
+                            'Structure: Cast Concrete Quality K-250',
+                            'Wall: Paint Texture & Conwood',
+                        ],
+                    ],
+                    [
+                        'title' => 'House Interior',
+                        'detail' => [
+                            'Ceiling: Gypsum Board',
+                            'Kitchen: Aluminum Sink, Ceramic-coated Concrete Table',
+                            'Door: Engineering Door',
+                            'Window: YKK Aluminum',
+                            'Bathroom: Toto',
+                        ],
+                    ],
+                    [
+                        'title' => 'House Exterior',
+                        'detail' => ['Roof: Flat Concrete', 'Carport: Alderon Roof, Granroof YKK'],
+                    ],
+                    [
+                        'title' => 'House Flooring',
+                        'detail' => ['Main: HT 60×60', 'Terrace: HT 40×40', 'Bathroom: HT 60×60', 'Wall: HT 60×60'],
+                    ],
                 ],
                 'images' => [
                     asset('images/kaede/kaede1.webp'),
@@ -163,8 +243,6 @@
                     asset('images/kaede/kaede4.webp'),
                     asset('images/kaede/kaede5.webp'),
                     asset('images/kaede/kaede6.webp'),
-                    asset('images/kaede/kaede7.webp'),
-                    asset('images/kaede/kaede8.webp'),
                 ],
             ],
             [
@@ -191,11 +269,11 @@
 
     @php
         $surroundGroups = [
-            // '0' => [
-            //     'label' => '0 Min',
-            //     'image' => asset('images/map/0min.webp'),
-            //     'items' => [['name' => 'Morizono', 'category' => 'Residential']],
-            // ],
+            '0' => [
+                'label' => '',
+                'image' => asset('images/map/0min.webp'),
+                'items' => [['name' => 'Morizono', 'category' => 'Residential']],
+            ],
             '1' => [
                 'label' => '1 Min',
                 'image' => asset('images/map/1min.webp'),
