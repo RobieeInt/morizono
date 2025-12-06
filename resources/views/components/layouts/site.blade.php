@@ -69,9 +69,66 @@
         {{ $slot }}
     </main>
 
+    {{-- Banner Modal --}}
+    <div id="banner-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+        <div class="relative w-full max-w-md">
+            {{-- Tombol close --}}
+            <button id="banner-close" type="button"
+                class="absolute -top-2 right-0 translate-x-1/2 rounded-full bg-white shadow-md w-8 h-8 flex items-center justify-center text-gray-700 text-xl leading-none">
+                &times;
+            </button>
+
+            {{-- Gambar banner --}}
+            <img id="banner-img" src="{{ asset('images/banner.webp') }}" alt="Morizono Banner"
+                class="w-full h-auto rounded-xl shadow-lg border border-white/40">
+        </div>
+    </div>
     <x-layouts.footer />
 
     @livewireScripts
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('banner-modal');
+            const closeBtn = document.getElementById('banner-close');
+
+            if (!modal) return;
+
+            const openModal = () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            // Buka setiap reload
+            openModal();
+
+            // Close via tombol
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeModal);
+            }
+
+            // Close kalau klik area gelap di luar konten
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Close via tombol ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
