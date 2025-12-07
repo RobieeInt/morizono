@@ -271,12 +271,12 @@
         $surroundGroups = [
             '0' => [
                 'label' => '',
-                'image' => asset('images/map/0min.webp'),
+                'image' => asset('images/map/0Minn.webp'),
                 'items' => [['name' => 'Morizono', 'category' => 'Residential']],
             ],
             '1' => [
                 'label' => '1 Min',
-                'image' => asset('images/map/1min.webp'),
+                'image' => asset('images/map/1Minn.webp'),
                 'items' => [
                     ['name' => 'The Park Sawangan', 'category' => 'Shopping Center'],
                     ['name' => 'Indogrosir', 'category' => 'Grocery Mart'],
@@ -286,7 +286,7 @@
             ],
             '5' => [
                 'label' => '5 Mins',
-                'image' => asset('images/map/5min.webp'),
+                'image' => asset('images/map/5Minn.webp'),
                 'items' => [
                     ['name' => 'Pamulang Toll Gate', 'category' => 'Transportation'],
                     ['name' => 'Hyfresh', 'category' => 'Grocery Mart'],
@@ -300,7 +300,7 @@
             ],
             '10' => [
                 'label' => '10 Mins',
-                'image' => asset('images/map/10min.webp'),
+                'image' => asset('images/map/10Minn.webp'),
                 'items' => [
                     ['name' => 'Sawangan Toll Gate', 'category' => 'Transportation'],
                     ['name' => 'PPD Transjakarta Ciputat', 'category' => 'Transportation'],
@@ -312,7 +312,7 @@
             ],
             '30' => [
                 'label' => '30 Mins',
-                'image' => asset('images/map/30min.webp'),
+                'image' => asset('images/map/30Minn.webp'),
                 'items' => [
                     ['name' => 'Pondok Indah Hospital', 'category' => 'Health'],
                     ['name' => 'Pondok Indah Mall', 'category' => 'Shopping Center'],
