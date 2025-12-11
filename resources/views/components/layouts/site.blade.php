@@ -52,6 +52,14 @@
         .ox-clip {
             overflow-x: clip;
         }
+
+        #banner-modal-inner {
+            max-width: min(90vw, 480px);
+        }
+
+        #banner-img {
+            max-height: 80vh;
+        }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -72,7 +80,7 @@
 
     {{-- Banner Modal --}}
     <div id="banner-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
-        <div class="relative w-full max-w-md">
+        <div id="banner-modal-inner" class="relative w-full max-w-md">
             {{-- Tombol close --}}
             <button id="banner-close" type="button"
                 class="absolute -top-2 right-0 translate-x-1/2 rounded-full bg-white shadow-md w-8 h-8 flex items-center justify-center text-gray-700 text-xl leading-none">
