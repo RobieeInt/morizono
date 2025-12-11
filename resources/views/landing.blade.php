@@ -79,7 +79,7 @@
         ['icon' => asset('icons/cctvmonitoring.svg'), 'label' => 'Smart CCTV Indoor'],
         ['icon' => asset('icons/cctvoutdoor.svg'), 'label' => 'Smart CCTV Outdoor'],
         ['icon' => asset('icons/smartlightswitch.svg'), 'label' => 'Smart Light Switch'],
-        ['icon' => asset('icons/smokesensor.svg'), 'label' => 'Smoke Sensor'],
+        // ['icon' => asset('icons/smokesensor.svg'), 'label' => 'Smoke Sensor'],
         ['icon' => asset('icons/voiceassistant.svg'), 'label' => 'Voice Assistant'],
         // ['icon' => asset('icons/smartcontactsensor.svg'), 'label' => 'Smart Contact Sensor'],
         ['icon' => asset('icons/doorbell.svg'), 'label' => 'Smart Doorbell'],
@@ -246,15 +246,46 @@
                 ],
             ],
             [
-                'name' => 'Shop House',
+                'name' => 'Shophouse',
                 'tourUrl' => '#contact',
-                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Floors', '3 Bedroom', '2 Bathroom', '2 Carport'],
+
+                // ringkasan spesifikasi utama
+                'specs' => ['2 Story 5×15', '3 Story 5×15', '3 Story 6×15 Corner', '3500 Watt'],
+
+                // spesifikasi detail per kategori
                 'items' => [
-                    ['title' => 'House Structure', 'detail' => ['Foot Plate + Tie Beam', 'Cast Concrete K-250']],
-                    ['title' => 'House Interior', 'detail' => 'Dummy interior spec…'],
-                    ['title' => 'House Exterior', 'detail' => 'Dummy exterior spec…'],
-                    ['title' => 'House Flooring', 'detail' => ['60x60 tile', 'Lantai kamar kayu laminated']],
+                    [
+                        'title' => 'Structure',
+                        'detail' => [
+                            'Pancang',
+                            'Structure: Cast Concrete Quality K-250',
+                            'Wall: Red Brick & Light Brick',
+                        ],
+                    ],
+                    [
+                        'title' => 'Interior',
+                        'detail' => [
+                            'Ceiling: Gypsum Board',
+                            'Door: YKK Aluminum & PVC Door',
+                            'Window: YKK Aluminum',
+                            'Sanitary: Toto',
+                        ],
+                    ],
+                    [
+                        'title' => 'Exterior',
+                        'detail' => ['Finishing: Exterior Paint, Conwood', 'Roof: UPVC Roof'],
+                    ],
+                    [
+                        'title' => 'Flooring',
+                        'detail' => [
+                            'Main: HT 60×60',
+                            'Terrace: HT 60×60',
+                            'Bathroom: Ceramic Tile 40×40 (floor & wall)',
+                        ],
+                    ],
                 ],
+
+                // foto-foto, biarin format sama
                 'images' => [
                     asset('images/shophouse/shophouse3.webp'),
                     asset('images/shophouse/shophouse1.webp'),
@@ -272,7 +303,33 @@
             '0' => [
                 'label' => '',
                 'image' => asset('images/map/0Minn.webp'),
-                'items' => [['name' => 'Morizono', 'category' => 'Residential']],
+                'items' => [
+                    [
+                        'name' => 'Morizono',
+                        'category' => 'Residential',
+                        // kalau mau icon di 0 min juga, isi di sini
+                        // 'icon' => asset('icons/home.png'),
+                        // 'icon_alt' => 'Morizono Residence',
+                    ],
+                    [
+                        'name' => 'Exit Tol Sawangan',
+                        'category' => 'Highway',
+                        'icon' => asset('icons/highway.png'),
+                        'icon_alt' => 'Exit Tol Sawangan',
+                    ],
+                    [
+                        'name' => 'Exit Tol Pamulang',
+                        'category' => 'Highway',
+                        'icon' => asset('icons/highway.png'),
+                        'icon_alt' => 'Exit Tol Pamulang',
+                    ],
+                    [
+                        'name' => 'MRT Lebak Bulus',
+                        'category' => 'Transportation',
+                        'icon' => asset('icons/bus-stop.png'),
+                        'icon_alt' => 'MRT Lebak Bulus',
+                    ],
+                ],
             ],
             '1' => [
                 'label' => '1 Min',
@@ -288,26 +345,39 @@
                 'label' => '5 Mins',
                 'image' => asset('images/map/5Minn.webp'),
                 'items' => [
-                    ['name' => 'Pamulang Toll Gate', 'category' => 'Transportation'],
+                    [
+                        'name' => 'Pamulang Toll Gate',
+                        'category' => 'Transportation',
+                        'icon' => asset('icons/highway.png'),
+                        'icon_alt' => 'Exit Tol Pamulang',
+                    ],
                     ['name' => 'Hyfresh', 'category' => 'Grocery Mart'],
                     ['name' => 'Burger King', 'category' => 'Food'],
                     ['name' => 'Domino Pizza', 'category' => 'Food'],
                     ['name' => 'Hoka Hoka Bento', 'category' => 'Food'],
                     ['name' => 'Brawijaya Hospital', 'category' => 'Health'],
                     ['name' => 'Commercial and Banking Center', 'category' => 'Financial'],
-                    // dst...
                 ],
             ],
             '10' => [
                 'label' => '10 Mins',
                 'image' => asset('images/map/10Minn.webp'),
                 'items' => [
-                    ['name' => 'Sawangan Toll Gate', 'category' => 'Transportation'],
+                    [
+                        'name' => 'Sawangan Toll Gate',
+                        'category' => 'Transportation',
+                        'icon' => asset('icons/highway.png'),
+                        'icon_alt' => 'Exit Tol Sawangan',
+                    ],
+                    [
+                        'name' => 'MRT Lebak Bulus',
+                        'category' => 'Transportation',
+                        'icon' => asset('icons/bus-stop.png'),
+                        'icon_alt' => 'MRT Lebak Bulus',
+                    ],
                     ['name' => 'PPD Transjakarta Ciputat', 'category' => 'Transportation'],
                     ['name' => 'Kharisma Bangsa Global School', 'category' => 'Education'],
                     ['name' => 'Mitra Keluarga Hospital ', 'category' => 'Health'],
-                    ['name' => 'MRT Lebak Bulus', 'category' => 'Transportation'],
-                    // dst...
                 ],
             ],
             '30' => [
@@ -317,7 +387,6 @@
                     ['name' => 'Pondok Indah Hospital', 'category' => 'Health'],
                     ['name' => 'Pondok Indah Mall', 'category' => 'Shopping Center'],
                     ['name' => 'Bandara Soekarno Hatta', 'category' => 'Transportation'],
-                    // dst...
                 ],
             ],
         ];

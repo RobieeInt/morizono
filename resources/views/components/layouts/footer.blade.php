@@ -22,7 +22,7 @@
 
                 <p class="text-xs leading-6 text-white/70">
                     Copyright © {{ date('Y') }}
-                    PT Graha Perdana Indah.
+                    PT Gardens Sinar Fajar.
                     All Rights Reserved.
                     By Reconext
                 </p>

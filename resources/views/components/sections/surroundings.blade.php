@@ -99,9 +99,19 @@
                                     class="mt-0.5 w-7 h-7 rounded-full border border-gray-500 flex items-center justify-center text-[11px] sm:text-xs font-semibold text-gray-800 bg-white/70">
                                     <span x-text="idx + 1"></span>
                                 </span>
-                                <div>
-                                    <p class="text-gray-900" x-text="item.name"></p>
-                                    <p class="text-xs text-gray-600" x-text="item.category"></p>
+
+                                <div class="flex-1 flex items-center justify-between gap-3">
+                                    {{-- teks kiri --}}
+                                    <div>
+                                        <p class="text-gray-900" x-text="item.name"></p>
+                                        <p class="text-xs text-gray-600" x-text="item.category"></p>
+                                    </div>
+
+                                    {{-- icon kanan (optional) --}}
+                                    <template x-if="item.icon">
+                                        <img :src="item.icon" :alt="item.icon_alt || item.name"
+                                            class="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0">
+                                    </template>
                                 </div>
                             </li>
                         </template>
