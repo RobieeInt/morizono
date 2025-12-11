@@ -304,13 +304,13 @@
                 'label' => '',
                 'image' => asset('images/map/0Minn.webp'),
                 'items' => [
-                    [
-                        'name' => 'Morizono',
-                        'category' => 'Residential',
-                        // kalau mau icon di 0 min juga, isi di sini
-                        // 'icon' => asset('icons/home.png'),
-                        // 'icon_alt' => 'Morizono Residence',
-                    ],
+                    // [
+                    //     'name' => 'Morizono',
+                    //     'category' => 'Residential',
+                    //     // kalau mau icon di 0 min juga, isi di sini
+                    //     // 'icon' => asset('icons/home.png'),
+                    //     // 'icon_alt' => 'Morizono Residence',
+                    // ],
                     [
                         'name' => 'Exit Tol Sawangan',
                         'category' => 'Highway',
