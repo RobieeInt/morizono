@@ -313,19 +313,19 @@
                     // ],
                     [
                         'name' => 'Exit Tol Sawangan',
-                        'category' => 'Highway',
+                        'category' => '5 Menit',
                         'icon' => asset('icons/highway.png'),
                         'icon_alt' => 'Exit Tol Sawangan',
                     ],
                     [
                         'name' => 'Exit Tol Pamulang',
-                        'category' => 'Highway',
+                        'category' => '10 Menit',
                         'icon' => asset('icons/highway.png'),
                         'icon_alt' => 'Exit Tol Pamulang',
                     ],
                     [
-                        'name' => 'MRT Lebak Bulus',
-                        'category' => 'Transportation',
+                        'name' => 'JR Connexion',
+                        'category' => 'to mrt lebak bulus',
                         'icon' => asset('icons/bus-stop.png'),
                         'icon_alt' => 'MRT Lebak Bulus',
                     ],

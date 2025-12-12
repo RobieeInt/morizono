@@ -95,23 +95,28 @@
                     <ol class="space-y-3 max-h-[420px] overflow-y-auto pr-1">
                         <template x-for="(item, idx) in current.items" :key="idx">
                             <li class="flex items-start gap-3 text-sm sm:text-base">
-                                <span
-                                    class="mt-0.5 w-7 h-7 rounded-full border border-gray-500 flex items-center justify-center text-[11px] sm:text-xs font-semibold text-gray-800 bg-white/70">
-                                    <span x-text="idx + 1"></span>
-                                </span>
-
-                                <div class="flex-1 flex items-center justify-between gap-3">
-                                    {{-- teks kiri --}}
-                                    <div>
-                                        <p class="text-gray-900" x-text="item.name"></p>
-                                        <p class="text-xs text-gray-600" x-text="item.category"></p>
-                                    </div>
-
-                                    {{-- icon kanan (optional) --}}
+                                {{-- BADGE KIRI: icon kalau ada, kalau nggak ada ya nomor --}}
+                                <div class="mt-0.5 w-7 h-7 sm:w-8 sm:h-8 shrink-0">
                                     <template x-if="item.icon">
-                                        <img :src="item.icon" :alt="item.icon_alt || item.name"
-                                            class="w-6 h-6 sm:w-7 sm:h-7 object-contain shrink-0">
+                                        <div
+                                            class="w-full h-full rounded-full border border-gray-500 bg-white/70 flex items-center justify-center">
+                                            <img :src="item.icon" :alt="item.icon_alt || item.name"
+                                                class="w-4 h-4 sm:w-5 sm:h-5 object-contain">
+                                        </div>
                                     </template>
+
+                                    <template x-if="!item.icon">
+                                        <div
+                                            class="w-full h-full rounded-full border border-gray-500 bg-white/70 flex items-center justify-center text-[11px] sm:text-xs font-semibold text-gray-800">
+                                            <span x-text="idx + 1"></span>
+                                        </div>
+                                    </template>
+                                </div>
+
+                                {{-- teks --}}
+                                <div class="flex-1">
+                                    <p class="text-gray-900" x-text="item.name"></p>
+                                    <p class="text-xs text-gray-600" x-text="item.category"></p>
                                 </div>
                             </li>
                         </template>
