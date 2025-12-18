@@ -7,8 +7,9 @@
 ])
 
 <section id="updates"
-    class="bg-[#EFECDC] updates-sec opacity-0 translate-y-[80px] transition-all duration-[1000ms] ease-out">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16" x-data="newsSlider({
+    class="bg-[#EFECDC] updates-sec opacity-0 translate-y-[80px] transition-all duration-[1000ms] ease-out
+           scroll-mt-40 pt-40 sm:pt-48">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16" x-data="newsSlider({
         perPage: (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1))
     })" x-init="$watch('perPage', v => updateDots());
     window.addEventListener('resize', () => {
@@ -23,9 +24,11 @@
                     {{ $title }}
                 </h2>
             </div>
+
             <div class="text-left text-sm text-gray-600 hidden sm:block ml-20">
                 {{ $subtitle }}
             </div>
+
             <div class="text-right">
                 <a href="{{ $seeAllUrl }}" class="text-sm underline hover:text-gray-900">See all Article</a>
             </div>
@@ -36,7 +39,7 @@
             {{-- buttons DI LUAR konten, bulat --}}
             <button type="button" @click="prev()" aria-label="Previous"
                 class="hidden sm:grid place-items-center absolute -left-14 top-1/2 -translate-y-1/2 z-20
-               w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
+                       w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
                 <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M15 6l-6 6 6 6" />
                 </svg>
@@ -44,7 +47,7 @@
 
             <button type="button" @click="next()" aria-label="Next"
                 class="grid place-items-center absolute -right-14 top-1/2 -translate-y-1/2 z-20
-               w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
+                       w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
                 <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 6l6 6-6 6" />
                 </svg>
@@ -76,6 +79,7 @@
                                     <h3 class="text-xl sm:text-2xl font-semibold leading-snug">
                                         {{ $p['title'] }}
                                     </h3>
+
                                     <p class="mt-2 text-sm text-white/85 line-clamp-2">
                                         {{ $p['excerpt'] }}
                                     </p>
@@ -163,6 +167,7 @@
             }
         }
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             function revealUpdates() {
