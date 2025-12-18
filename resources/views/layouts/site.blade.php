@@ -8,6 +8,7 @@
 
     {{-- Title --}}
     <title>{{ $title ?? config('app.name', 'Morizono') }}</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('faviconm.svg') }}">
 
     {{-- CSRF for forms & Livewire --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
