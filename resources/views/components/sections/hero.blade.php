@@ -110,7 +110,7 @@
         </div>
     </div>
 
-    <a href="https://wa.me/628568780192" target="_blank" rel="noopener"
+    <a href="https://wa.me/6282280000326" target="_blank" rel="noopener"
         class="fixed left-4 bottom-5 z-20 block shadow-lg transition hover:opacity-90">
         <img src="{{ asset('whatsapp.svg') }}" alt="WhatsApp" class="w-12 h-12" />
     </a>
