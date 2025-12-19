@@ -11,7 +11,7 @@
            scroll-mt-40 pt-40 sm:pt-48">
     <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16" x-data="newsSlider({
         perPage: (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1))
-    })" x-init="$watch('perPage', v => updateDots());
+    })" x-init="init();
     window.addEventListener('resize', () => {
         perPage = (window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1));
         updateDots();
@@ -35,20 +35,27 @@
         </div>
 
         {{-- slider --}}
-        <div class="relative overflow-visible"> {{-- penting: biar tombol di luar gak kepotong --}}
-            {{-- buttons DI LUAR konten, bulat --}}
+        {{-- wrapper dibuat lebih lebar + padding jadi “lane” tombol --}}
+        <div
+            class="relative overflow-visible
+                    -mx-16 sm:-mx-20 lg:-mx-24
+                    px-16 sm:px-20 lg:px-24">
+
+            {{-- buttons: nempel kiri/kanan wrapper lane --}}
             <button type="button" @click="prev()" aria-label="Previous"
-                class="hidden sm:grid place-items-center absolute -left-14 top-1/2 -translate-y-1/2 z-20
+                class="hidden sm:grid place-items-center absolute left-4 top-1/2 -translate-y-1/2 z-20
                        w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
-                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 6l-6 6 6 6" />
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
                 </svg>
             </button>
 
             <button type="button" @click="next()" aria-label="Next"
-                class="grid place-items-center absolute -right-14 top-1/2 -translate-y-1/2 z-20
+                class="hidden sm:grid place-items-center absolute right-4 top-1/2 -translate-y-1/2 z-20
                        w-11 h-11 rounded-full border bg-white/90 hover:bg-white shadow">
-                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2">
+                <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 6l6 6-6 6" />
                 </svg>
             </button>
