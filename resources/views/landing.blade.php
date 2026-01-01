@@ -24,7 +24,7 @@
             ['label' => 'Sumire', 'href' => '#Sumire'],
             ['label' => 'Ayame', 'href' => '#Ayame'],
             ['label' => 'Kaede', 'href' => '#Kaede'],
-            ['label' => 'Shop House', 'href' => '#Shop House'], // <— ini tambahan
+            ['label' => 'Shop House', 'href' => '#ShopHouse'], // <— ini tambahan
         ]"
         {{-- :clusters (array)
             - List menu/shortcut cluster (biasanya tombol/anchor di hero).
@@ -418,7 +418,7 @@
                 ],
             ],
             [
-                'name' => 'Shophouse',
+                'name' => 'ShopHouse',
                 'tourUrl' => '#contact',
 
                 // ringkasan spesifikasi utama

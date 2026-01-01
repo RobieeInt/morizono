@@ -9,11 +9,36 @@
 
             <!-- center: links (desktop) -->
             <ul class="hidden md:flex items-center gap-8 text-sm text-gray-800">
-                <li><a href="{{ route('landing') }}" class="hover:text-gray-900">Home</a></li>
-                <li><a href="#about" class="hover:text-gray-900">About</a></li>
-                <li><a href="#Sumire" class="hover:text-gray-900">Our Unit Types</a></li>
-                <li><a href="{{ route('news.index') }}" class="hover:text-gray-900">Updates</a></li>
-                <li><a href="#contact" class="hover:text-gray-900">Contact</a></li>
+                <li>
+                    <a href="{{ route('landing') }}" class="hover:text-gray-900">Home</a>
+                </li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#about' : route('landing') . '#about' }}"
+                        class="hover:text-gray-900">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#Sumire' : route('landing') . '#Sumire' }}"
+                        class="hover:text-gray-900">
+                        Our Unit Types
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('news.index') }}" class="hover:text-gray-900">
+                        Updates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#contact' : route('landing') . '#contact' }}"
+                        class="hover:text-gray-900">
+                        Contact
+                    </a>
+                </li>
             </ul>
 
             <!-- right: CTA + burger -->
@@ -36,18 +61,45 @@
         <!-- mobile menu -->
         <div class="md:hidden pt-2 pb-3" x-show="open" x-transition>
             <ul class="space-y-1 text-sm">
-                <li><a href="{{ route('landing') }}" class="block rounded px-3 py-2 hover:bg-black/5">Home</a></li>
-                <li><a href="{{ route('landing') }}#about" class="block rounded px-3 py-2 hover:bg-black/5">About</a>
+                <li>
+                    <a href="{{ route('landing') }}" class="block rounded px-3 py-2 hover:bg-black/5">
+                        Home
+                    </a>
                 </li>
-                <li><a href="{{ route('landing') }}#clusters" class="block rounded px-3 py-2 hover:bg-black/5">Our
-                        Cluster</a></li>
-                <li><a href="{{ route('news.index') }}" class="block rounded px-3 py-2 hover:bg-black/5">Updates</a>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#about' : route('landing') . '#about' }}"
+                        class="block rounded px-3 py-2 hover:bg-black/5">
+                        About
+                    </a>
                 </li>
-                <li><a href="{{ route('landing') }}#contact"
-                        class="block rounded px-3 py-2 hover:bg-black/5">Contact</a></li>
-                <li><a href="{{ route('landing') }}#book"
-                        class="block rounded px-3 py-2 bg-amber-300/80 hover:bg-amber-400 text-gray-900 font-semibold">Book
-                        a tour</a></li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#Sumire' : route('landing') . '#Sumire' }}"
+                        class="block rounded px-3 py-2 hover:bg-black/5">
+                        Our Unit Types
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('news.index') }}" class="block rounded px-3 py-2 hover:bg-black/5">
+                        Updates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#contact' : route('landing') . '#contact' }}"
+                        class="block rounded px-3 py-2 hover:bg-black/5">
+                        Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ request()->routeIs('landing') ? '#book' : route('landing') . '#book' }}"
+                        class="block rounded px-3 py-2 bg-amber-300/80 hover:bg-amber-400 text-gray-900 font-semibold">
+                        Book a tour
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
