@@ -273,8 +273,8 @@
                             // - Poin-poin detail spesifikasi dalam kategori itu.
                             'Foundation: Foot Plate + Pancang → Minipiles',
                             'Structure: Cast Concrete K-250',
-                            'Wall: Textured Paint, Conwood No conwood in T6 new layout only in T7 & T8 and also the content is misplaced wall finish is more suitable in house exterior section rather than in house structure section.
-                        if we want to mention about wall in house structure better use “Red Brick, Light Brick”
+                            'Wall: Red Brick, Light Brick, Textured Paint. No conwood in T6 new layout only in T7 & T8 and also the content is misplaced wall finish is more suitable in house exterior section rather than in house structure section.
+                            if we want to mention about wall in house structure better use “Red Brick, Light Brick”
                         ',
                         ],
                     ],
@@ -290,7 +290,7 @@
                     ],
                     [
                         'title' => 'House Exterior',
-                        'detail' => ['Roof: Flat Concrete, UPVC Roof', 'Carport: Alderon Roof, Granroof YKK'],
+                        'detail' => ['Roof: Flat Concrete, UPVC Roof', 'Carport: Granroof YKK'],
                     ],
                     [
                         'title' => 'House Flooring',
