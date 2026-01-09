@@ -249,16 +249,7 @@
                 // tourUrl (string URL)
                 // - Link tombol "Book a tour" khusus cluster ini.
 
-                'specs' => [
-                    '6×14',
-                    'LT 84',
-                    'LB 88',
-                    '2200 Watt',
-                    '2 Floor → Storey',
-                    '3 Bedroom',
-                    '2 Bathroom',
-                    '2 Carport',
-                ],
+                'specs' => ['6×14', 'LT 84', 'LB 88', '2200 Watt', '2 Storey', '3 Bedroom', '2 Bathroom', '2 Carport'],
                 // specs (array of string)
                 // - Ringkasan spesifikasi utama (list singkat di atas/side).
 
@@ -271,10 +262,9 @@
                         'detail' => [
                             // detail (array of string)
                             // - Poin-poin detail spesifikasi dalam kategori itu.
-                            'Foundation: Foot Plate + Pancang → Minipiles',
+                            'Foundation: Foot Plate + Minipiles',
                             'Structure: Cast Concrete K-250',
-                            'Wall: Red Brick, Light Brick, Textured Paint. No conwood in T6 new layout only in T7 & T8 and also the content is misplaced wall finish is more suitable in house exterior section rather than in house structure section.
-                            if we want to mention about wall in house structure better use “Red Brick, Light Brick”
+                            'Wall: Red Brick, Light Brick. ”
                         ',
                         ],
                     ],
@@ -298,7 +288,7 @@
                             'Main: HT 60x60',
                             'Terrace & Balcony HT 60x60',
                             'Bathroom: HT 60x60',
-                            'Wall: HT 60x60',
+                            'Bathroom Wall: HT 60x60',
                             'Carport : Ceramic Tile 40x40',
                         ],
                     ],
@@ -325,7 +315,7 @@
                     'LT 98',
                     'LB 109',
                     '2200 Watt',
-                    '2 Floors',
+                    '2 Storey',
                     '3 Bedrooms',
                     '2 Bathroom',
                     '2 Carport',
@@ -334,9 +324,9 @@
                     [
                         'title' => 'House Structure',
                         'detail' => [
-                            'Foundation: Foot Plate + Pancang',
+                            'Foundation: Foot Plate + Minipiles',
                             'Structure: Cast Concrete Quality K-250',
-                            'Wall: Plastered Brick, Paint Texture & Conwood',
+                            'Wall: Red Brick, Light Brick',
                         ],
                     ],
                     [
@@ -351,11 +341,21 @@
                     ],
                     [
                         'title' => 'House Exterior',
-                        'detail' => ['Roof: Flat Concrete', 'Carport: Alderson Roof, Granroof YKK'],
+                        'detail' => [
+                            'Roof: Flat Concrete, UPVC Roof',
+                            'Carport: Granroof YKK',
+                            'Wall: Conwood, Textured Paint, Exterior Paint',
+                        ],
                     ],
                     [
                         'title' => 'House Flooring',
-                        'detail' => ['Main: HT 60×60', 'Terrace: HT 40×40', 'Bathroom: HT 60×60', 'Wall: HT 60×60'],
+                        'detail' => [
+                            'Main: HT 60×60',
+                            'Terrace & Balcony: HT 60x60 ',
+                            'Bathroom: HT 60×60',
+                            'Bathroom Wall: HT 60x60',
+                            'Carport: Ceramic Tile 40x40 ',
+                        ],
                     ],
                 ],
                 'images' => [
@@ -375,7 +375,7 @@
                     'LT 112',
                     'LB 129',
                     '2200 Watt',
-                    '2 Floors',
+                    '2 Storey',
                     '3 Bedrooms',
                     '2 Bathroom',
                     '2 Carport',
@@ -384,28 +384,38 @@
                     [
                         'title' => 'House Structure',
                         'detail' => [
-                            'Foundation: Foot Plate + Pancang',
+                            'Foundation: Foot Plate + Minipiles',
                             'Structure: Cast Concrete Quality K-250',
-                            'Wall: Paint Texture & Conwood',
+                            'Wall: Red Brick, Light Brick.',
                         ],
                     ],
                     [
                         'title' => 'House Interior',
                         'detail' => [
                             'Ceiling: Gypsum Board',
-                            'Kitchen: Aluminum Sink, Ceramic-coated Concrete Table',
+                            'Kitchen: Kitchen Sink, Concrete Table + HT 60x60, Grease Trap ',
                             'Door: Engineering Door',
                             'Window: YKK Aluminum',
-                            'Bathroom: Toto',
+                            'Sanitary: TOTO',
                         ],
                     ],
                     [
                         'title' => 'House Exterior',
-                        'detail' => ['Roof: Flat Concrete', 'Carport: Alderon Roof, Granroof YKK'],
+                        'detail' => [
+                            'Roof: Flat Concrete, UPVC Roof',
+                            'Carport: Granroof YKK',
+                            'Wall: Conwood, Textured Paint, Exterior Paint',
+                        ],
                     ],
                     [
                         'title' => 'House Flooring',
-                        'detail' => ['Main: HT 60×60', 'Terrace: HT 40×40', 'Bathroom: HT 60×60', 'Wall: HT 60×60'],
+                        'detail' => [
+                            'Main: HT 60×60',
+                            'Terrace & Balcony: HT 60x60 ',
+                            'Bathroom: HT 60×60',
+                            'Bathroom Wall: HT 60×60',
+                            'Carport: Ceramic Tile 40x40 ',
+                        ],
                     ],
                 ],
                 'images' => [
@@ -422,14 +432,14 @@
                 'tourUrl' => '#contact',
 
                 // ringkasan spesifikasi utama
-                'specs' => ['2 Story 5×15', '3 Story 5×15', '3 Story 6×15 Corner', '3500 Watt'],
+                'specs' => ['2 Storey 5×15', '3 Storey 5×15', '3 Storey 6×15 Corner', '3500 Watt'],
 
                 // spesifikasi detail per kategori
                 'items' => [
                     [
                         'title' => 'Structure',
                         'detail' => [
-                            'Pancang',
+                            'Minipiles',
                             'Structure: Cast Concrete Quality K-250',
                             'Wall: Red Brick & Light Brick',
                         ],
@@ -440,7 +450,7 @@
                             'Ceiling: Gypsum Board',
                             'Door: YKK Aluminum & PVC Door',
                             'Window: YKK Aluminum',
-                            'Sanitary: Toto',
+                            'Sanitary: TOTO',
                         ],
                     ],
                     [
