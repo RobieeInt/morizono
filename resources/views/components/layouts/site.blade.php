@@ -126,7 +126,7 @@
             </button>
 
             {{-- Gambar banner --}}
-            <img id="banner-img" src="{{ asset('images/banner.webp') }}" alt="Morizono Banner"
+            <img id="banner-img" src="{{ asset('images/banner.webp') }}?v={{ time() }}" alt="Morizono Banner"
                 class="w-full h-auto rounded-xl shadow-lg border border-white/40">
         </div>
     </div>
