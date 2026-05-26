@@ -19,3 +19,4 @@ yarn-error.log
 /.vscode
 public/*.zip
 public/*.zip
+yarn.lock
