@@ -3,14 +3,13 @@
 /* Marcellus (Google Fonts) */
 @import url("https://fonts.googleapis.com/css2?family=Marcellus&display=swap");
 
-/* Avenir – fallback ke lokal atau file yang lo punya */
+/* Avenir – dari system (Mac/iOS built-in). Tidak ada file lokal → tidak 404 */
 @font-face {
     font-family: "Avenir";
-    src: local("Avenir"), local("Avenir LT Std"),
-        url("/fonts/Avenir.woff2") format("woff2"),
-        url("/fonts/Avenir.woff") format("woff");
+    src: local("Avenir Next"), local("Avenir"), local("Avenir LT Std");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 /* Set default font untuk seluruh halaman */
