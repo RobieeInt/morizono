@@ -29,8 +29,11 @@
 <section class="relative h-screen w-full overflow-hidden flex items-center justify-center text-center"
     x-data="{ hoverBg: '' }">
 
-    {{-- LCP: background sebagai <img> agar browser bisa detect & preload --}}
-    <img src="{{ $background }}" alt="" role="presentation" aria-hidden="true"
+    {{-- LCP: responsive hero — mobile 48KB, desktop 260KB --}}
+    <img src="{{ $background }}"
+         srcset="{{ asset('images/hero-mobile.webp') }} 800w, {{ $background }} 1920w"
+         sizes="100vw"
+         alt="" role="presentation" aria-hidden="true"
          class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
          fetchpriority="high" loading="eager" width="1920" height="1080">
 

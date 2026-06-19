@@ -208,7 +208,7 @@
                                 obs.disconnect();
                             }
                         });
-                    }, { rootMargin: '200px' });
+                    }, { rootMargin: '50px' });
                     obs.observe(sosmedSection);
                 } else {
                     // Fallback: load langsung jika IntersectionObserver tidak didukung

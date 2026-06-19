@@ -93,8 +93,12 @@
         }
     </style>
 
-    {{-- Preload hero LCP image --}}
-    <link rel="preload" as="image" href="{{ asset('images/hero.webp') }}" fetchpriority="high">
+    {{-- Preload hero LCP image — responsive: mobile 48KB, desktop 260KB --}}
+    <link rel="preload" as="image"
+          href="{{ asset('images/hero.webp') }}"
+          imagesrcset="{{ asset('images/hero-mobile.webp') }} 800w, {{ asset('images/hero.webp') }} 1920w"
+          imagesizes="100vw"
+          fetchpriority="high">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -162,6 +166,9 @@
             if (!modal) return;
 
             const openModal = () => {
+                // Kompensasi scrollbar agar konten tidak bergeser (fix CLS)
+                const sw = window.innerWidth - document.documentElement.clientWidth;
+                if (sw > 0) document.body.style.paddingRight = sw + 'px';
                 modal.classList.remove('hidden');
                 modal.classList.add('flex');
                 document.body.classList.add('overflow-hidden');
@@ -171,6 +178,7 @@
                 modal.classList.add('hidden');
                 modal.classList.remove('flex');
                 document.body.classList.remove('overflow-hidden');
+                document.body.style.paddingRight = '';
             };
 
             // Buka setiap reload
