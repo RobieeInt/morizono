@@ -60,6 +60,16 @@
         #banner-img {
             max-height: 80vh;
         }
+
+        @media (min-width: 768px) {
+            #banner-modal-inner {
+                max-width: min(90vw, 860px);
+            }
+
+            #banner-img {
+                max-height: 75vh;
+            }
+        }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
