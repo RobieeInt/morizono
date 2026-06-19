@@ -67,7 +67,7 @@
                                         <iframe data-src="{{ $embedSrc }}"
                                             style="position:absolute;inset:0;width:100%;height:100%;border:0"
                                             title="{{ $p['title'] ?? 'Video' }}"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure"
                                             allowfullscreen></iframe>
                                     </div>
                                 @else
@@ -118,7 +118,7 @@
                                 <iframe data-src="{{ $embedSrc }}"
                                     class="absolute inset-0 w-full h-full border-0"
                                     title="{{ $p['title'] ?? 'Video' }}"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; compute-pressure"
                                     allowfullscreen></iframe>
                             </div>
                         @else
