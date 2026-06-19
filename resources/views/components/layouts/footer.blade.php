@@ -12,10 +12,14 @@
 
             {{-- Brand + copyrights (span 2 on lg) --}}
             <div class="col-span-2">
-                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono" loading="lazy" width="160" height="28"
-                    class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
-                <img src="{{ asset('logo/developed2.webp') }}" alt="Developed by Gardens" loading="lazy" width="160" height="28"
-                    class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
+                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono" loading="lazy"
+                    width="1836" height="433"
+                    style="height:28px;width:auto"
+                    class="block mb-3 opacity-90">
+                <img src="{{ asset('logo/developed2.webp') }}" alt="Developed by Gardens" loading="lazy"
+                    width="808" height="104"
+                    style="height:28px;width:auto"
+                    class="block mb-3 opacity-90">
                 {{--
                 <img src="{{ asset('logo/footerph.webp') }}" alt="Sumitomo Forestry"
                     class="block w-full h-auto sm:w-auto sm:h-12 mb-6 opacity-90 object-contain"> --}}

@@ -49,8 +49,10 @@
         </p>
 
         @if ($logo)
-            <img src="{{ $logo }}" alt="Morizono" class="h-[clamp(60px,10vw,120px)] mb-5 opacity-95"
-                fetchpriority="high" loading="eager" width="520" height="120">
+            <img src="{{ $logo }}" alt="Morizono"
+                style="height:clamp(60px,10vw,120px);width:auto"
+                class="mb-5 opacity-95"
+                fetchpriority="high" loading="eager" width="1836" height="433">
         @endif
 
         <p class="mt-3 text-white/90 font-headings uppercase tracking-[0.2em] text-[clamp(12px,1.3vw,18px)]">

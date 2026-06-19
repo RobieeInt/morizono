@@ -30,6 +30,7 @@
     {{-- Preconnect external domains --}}
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.youtube-nocookie.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
 
     {{-- Guard anti-overflow & media safety --}}

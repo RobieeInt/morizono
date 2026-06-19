@@ -53,7 +53,7 @@
                             $permalink = $p['url'] ?? '';
                             $ytId = ytIdFromUrl($p['embed'] ?? null);
                             $baseParam = 'mute=1&playsinline=1&controls=1&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3&autoplay=1';
-                            $embedSrc = $ytId ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
+                            $embedSrc = $ytId ? "https://www.youtube-nocookie.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
                         @endphp
 
                         <article class="relative snap-start shrink-0" style="width:85vw">
@@ -61,14 +61,14 @@
                                 <a href="{{ $permalink }}" target="_blank" rel="noopener"
                                     class="absolute inset-0 z-20" aria-label="Open Instagram post"></a>
 
-                                {{-- YouTube iframe langsung --}}
+                                {{-- YouTube iframe (lazy: load saat section masuk viewport) --}}
                                 @if ($embedSrc)
                                     <div style="position:relative;aspect-ratio:9/16;background:#000">
-                                        <iframe src="{{ $embedSrc }}"
+                                        <iframe data-src="{{ $embedSrc }}"
                                             style="position:absolute;inset:0;width:100%;height:100%;border:0"
                                             title="{{ $p['title'] ?? 'Video' }}"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen loading="lazy"></iframe>
+                                            allowfullscreen></iframe>
                                     </div>
                                 @else
                                     <div style="background:#000;aspect-ratio:9/16"></div>
@@ -104,7 +104,7 @@
                     $permalink = $p['url'] ?? '';
                     $ytId = ytIdFromUrl($p['embed'] ?? null);
                     $baseParam = 'mute=1&playsinline=1&controls=1&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3&autoplay=1';
-                    $embedSrc = $ytId ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
+                    $embedSrc = $ytId ? "https://www.youtube-nocookie.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
                 @endphp
 
                 <article class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
@@ -112,14 +112,14 @@
                         <a href="{{ $permalink }}" target="_blank" rel="noopener"
                             class="absolute inset-0 z-20" aria-label="Open Instagram post"></a>
 
-                        {{-- YouTube iframe langsung --}}
+                        {{-- YouTube iframe (lazy: load saat section masuk viewport) --}}
                         @if ($embedSrc)
                             <div class="ratio-9-16 relative">
-                                <iframe src="{{ $embedSrc }}"
+                                <iframe data-src="{{ $embedSrc }}"
                                     class="absolute inset-0 w-full h-full border-0"
                                     title="{{ $p['title'] ?? 'Video' }}"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen loading="lazy"></iframe>
+                                    allowfullscreen></iframe>
                             </div>
                         @else
                             <div class="bg-black ratio-9-16"></div>
@@ -195,6 +195,27 @@
                 window.addEventListener('scroll', revealCards, { passive: true });
                 revealCards();
 
+                // Lazy-load YouTube iframes saat section #sosmed masuk viewport
+                const sosmedSection = document.getElementById('sosmed');
+                if (sosmedSection && 'IntersectionObserver' in window) {
+                    const obs = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                document.querySelectorAll('#sosmed iframe[data-src]').forEach(iframe => {
+                                    iframe.src = iframe.dataset.src;
+                                    delete iframe.dataset.src;
+                                });
+                                obs.disconnect();
+                            }
+                        });
+                    }, { rootMargin: '200px' });
+                    obs.observe(sosmedSection);
+                } else {
+                    // Fallback: load langsung jika IntersectionObserver tidak didukung
+                    document.querySelectorAll('#sosmed iframe[data-src]').forEach(iframe => {
+                        iframe.src = iframe.dataset.src;
+                    });
+                }
             });
         </script>
     @endonce
