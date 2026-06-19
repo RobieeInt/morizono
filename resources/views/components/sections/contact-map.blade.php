@@ -44,8 +44,8 @@
             </div> --}}
             {{-- RIGHT: IMAGE PANEL --}}
             <div class="relative rounded-md overflow-hidden h-full">
-                <img src="{{ asset('images/about/about1.webp') }}" class="w-full mt-20 object-cover"
-                    style="height: 83%">
+                <img src="{{ asset('images/about/about1.webp') }}" alt="Morizono residence exterior view"
+                    class="w-full mt-20 object-cover" style="height: 83%" loading="lazy">
                 <div class="absolute inset-0 bg-black/10"></div>
             </div>
 

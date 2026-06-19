@@ -139,6 +139,8 @@
                 <div class="mt-5 flex flex-wrap justify-center gap-2 sm:gap-3">
                     <template x-for="(group, key) in groups" :key="key">
                         <button type="button" @click="setActive(key)"
+                            :aria-label="'Show surroundings within ' + group.label"
+                            :aria-pressed="active === key"
                             class="px-3 sm:px-4 py-1.5 rounded-full border text-xs sm:text-sm font-medium tracking-wide transition"
                             :class="active === key ?
                                 'bg-gray-900 text-white border-gray-900' :

@@ -21,8 +21,8 @@
         {{-- Video wrapper --}}
         <div class="relative max-w-4xl mx-auto" x-data="{ muted: true }">
             <div class="aspect-video rounded-2xl overflow-hidden shadow-lg bg-black relative">
-                <video x-ref="vid" class="w-full h-full object-cover" autoplay muted loop playsinline>
-                    <source src="{{ $videoSrc }}" type="video/mp4">
+                <video x-ref="vid" class="w-full h-full object-cover" muted loop playsinline preload="none"
+                    data-src="{{ $videoSrc }}">
                     Browser Anda tidak mendukung video HTML5.
                 </video>
 
@@ -39,5 +39,25 @@
                 </button>
             </div>
         </div>
+
+        <script>
+            (function() {
+                const section = document.getElementById('progress');
+                if (!section) return;
+                const observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (!entry.isIntersecting) return;
+                        const vid = section.querySelector('video[data-src]');
+                        if (!vid) return;
+                        const src = vid.dataset.src;
+                        vid.innerHTML = '<source src="' + src + '" type="video/mp4">';
+                        vid.load();
+                        vid.play().catch(function() {});
+                        observer.disconnect();
+                    });
+                }, { rootMargin: '200px' });
+                observer.observe(section);
+            })();
+        </script>
     </div>
 </section>

@@ -26,15 +26,21 @@
     $extraClusters = array_slice($clusters, 3);
 @endphp
 
-<section x-data="{ bgCurrent: '{{ $background }}' }" :style="`background-image:url('${bgCurrent}')`"
-    class="relative h-screen w-full overflow-hidden flex items-center justify-center text-center bg-cover bg-center">
+<section class="relative h-screen w-full overflow-hidden flex items-center justify-center text-center"
+    x-data="{ hoverBg: '' }">
 
-    {{-- overlay fade untuk animasi hover bg --}}
-    <div x-ref="fade" class="absolute inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-500">
-    </div>
+    {{-- LCP: background sebagai <img> agar browser bisa detect & preload --}}
+    <img src="{{ $background }}" alt="" role="presentation" aria-hidden="true"
+         class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+         fetchpriority="high" loading="eager" width="1920" height="1080">
+
+    {{-- Hover overlay: fade in/out saat hover cluster --}}
+    <img x-show="hoverBg" :src="hoverBg" alt="" role="presentation" aria-hidden="true"
+         class="absolute inset-0 w-full h-full object-cover object-center pointer-events-none transition-opacity duration-500"
+         loading="lazy" width="1920" height="1080">
 
     {{-- overlay gelap --}}
-    <div class="absolute inset-0 bg-black/45"></div>
+    <div class="absolute inset-0 bg-black/45 pointer-events-none"></div>
 
     <div class="relative z-10 flex flex-col items-center justify-center max-w-6xl px-4 sm:px-6 lg:px-8">
 
@@ -43,7 +49,8 @@
         </p>
 
         @if ($logo)
-            <img src="{{ $logo }}" alt="Morizono" class="h-[clamp(60px,10vw,120px)] mb-5 opacity-95">
+            <img src="{{ $logo }}" alt="Morizono" class="h-[clamp(60px,10vw,120px)] mb-5 opacity-95"
+                fetchpriority="high" loading="eager" width="520" height="120">
         @endif
 
         <p class="mt-3 text-white/90 font-headings uppercase tracking-[0.2em] text-[clamp(12px,1.3vw,18px)]">
@@ -61,16 +68,8 @@
                     @endphp
 
                     <a href="{{ $href }}"
-                        @mouseenter="
-                            $refs.fade.classList.add('opacity-60');
-                            setTimeout(()=>{ bgCurrent='{{ $bgForThis }}' },200);
-                            setTimeout(()=>{ $refs.fade.classList.remove('opacity-60') },300);
-                        "
-                        @mouseleave="
-                            $refs.fade.classList.add('opacity-60');
-                            setTimeout(()=>{ bgCurrent='{{ $background }}' },200);
-                            setTimeout(()=>{ $refs.fade.classList.remove('opacity-60') },300);
-                        "
+                        @mouseenter="hoverBg='{{ $bgForThis }}'"
+                        @mouseleave="hoverBg=''"
                         class="backdrop-blur bg-white/25 hover:bg-white/35 text-white rounded px-6 py-3 text-center text-sm font-medium transition">
                         {{ $label }}
                     </a>
@@ -88,16 +87,8 @@
                         @endphp
 
                         <a href="{{ $href }}"
-                            @mouseenter="
-                                $refs.fade.classList.add('opacity-60');
-                                setTimeout(()=>{ bgCurrent='{{ $bgForThis }}' },200);
-                                setTimeout(()=>{ $refs.fade.classList.remove('opacity-60') },300);
-                            "
-                            @mouseleave="
-                                $refs.fade.classList.add('opacity-60');
-                                setTimeout(()=>{ bgCurrent='{{ $background }}' },200);
-                                setTimeout(()=>{ $refs.fade.classList.remove('opacity-60') },300);
-                            "
+                            @mouseenter="hoverBg='{{ $bgForThis }}'"
+                            @mouseleave="hoverBg=''"
                             class="backdrop-blur bg-white/25 hover:bg-white/35 text-white rounded px-6 py-3 text-center text-sm font-medium transition">
                             {{ $label }}
                         </a>
@@ -106,12 +97,14 @@
             @endif
 
             <img src="{{ asset('logo/developed2.webp') }}" alt="Morizono"
-                class="w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px] opacity-95 mt-20" />
+                class="w-full max-w-[360px] sm:max-w-[440px] lg:max-w-[520px] opacity-95 mt-20"
+                loading="lazy" width="520" height="80" />
         </div>
     </div>
 
-    <a href="https://wa.me/6282280000326" target="_blank" rel="noopener"
-        class="fixed left-4 bottom-5 z-20 block shadow-lg transition hover:opacity-90">
-        <img src="{{ asset('whatsapp.svg') }}" alt="WhatsApp" class="w-12 h-12" />
+    <a href="https://wa.me/6282280000326" target="_blank" rel="noopener noreferrer"
+        class="fixed left-4 bottom-5 z-20 block shadow-lg transition hover:opacity-90"
+        aria-label="Chat via WhatsApp">
+        <img src="{{ asset('whatsapp.svg') }}" alt="WhatsApp" width="48" height="48" class="w-12 h-12" />
     </a>
 </section>

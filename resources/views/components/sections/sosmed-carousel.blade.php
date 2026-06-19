@@ -33,75 +33,53 @@
     {{-- Instagram (YouTube embed video-only behavior) --}}
     <div id="instagram" class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-4 sm:pt-5 pb-10 sm:pb-12">
 
-        {{-- MOBILE SLIDER (<sm) --}}
-        <div class="sm:hidden relative" x-data="sosmedMobile({})" x-init="init()">
-            {{-- track --}}
+        {{-- Helper macro: render 1 sosmed card (facade YT) --}}
+        @php
+            function ytIdFromUrl($url) {
+                if (!$url) return null;
+                if (preg_match('~youtube\.com/shorts/([^/?#&]+)~i', $url, $m)) return $m[1];
+                if (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/)([^/?#&]+)~i', $url, $m)) return $m[1];
+                return null;
+            }
+        @endphp
+
+        {{-- MOBILE SLIDER (<lg) --}}
+        <div class="lg:hidden relative" x-data="sosmedMobile({})" x-init="init()">
             <div x-ref="track" class="overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar"
                 @scroll.debounce.120="onScroll()">
                 <div class="flex gap-4 w-max">
                     @foreach ($posts as $p)
                         @php
                             $permalink = $p['url'] ?? '';
-                            $yt = $p['embed'] ?? null;
-                            $ytId = null;
-
-                            if ($yt) {
-                                if (preg_match('~youtube\.com/shorts/([^/?#&]+)~i', $yt, $m)) {
-                                    $ytId = $m[1];
-                                } elseif (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/)([^/?#&]+)~i', $yt, $m)) {
-                                    $ytId = $m[1];
-                                }
-                            }
-
-                            $isFirst = $loop->first;
-                            $baseParam =
-                                'mute=1&playsinline=1&controls=0&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3';
-                            $ytSrc = $ytId
-                                ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}&autoplay=" .
-                                    ($isFirst ? '1' : '0')
-                                : null;
+                            $ytId = ytIdFromUrl($p['embed'] ?? null);
+                            $baseParam = 'mute=1&playsinline=1&controls=1&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3&autoplay=1';
+                            $embedSrc = $ytId ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
                         @endphp
 
-                        <article
-                            class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
+                        <article class="relative snap-start shrink-0" style="width:85vw">
                             <div class="relative rounded-[10px] overflow-hidden shadow">
-                                {{-- overlay ke IG --}}
                                 <a href="{{ $permalink }}" target="_blank" rel="noopener"
                                     class="absolute inset-0 z-20" aria-label="Open Instagram post"></a>
 
-                                @if ($ytSrc)
-                                    <div class="bg-black ratio-9-16">
-                                        <iframe class="ytvid w-full h-full block" data-vid="{{ $ytId }}"
-                                            data-base="https://www.youtube.com/embed/{{ $ytId }}?{{ $baseParam }}&playlist={{ $ytId }}"
-                                            src="{{ $ytSrc }}" title="{{ $p['title'] ?? 'Shorts' }}"
+                                {{-- YouTube iframe langsung --}}
+                                @if ($embedSrc)
+                                    <div style="position:relative;aspect-ratio:9/16;background:#000">
+                                        <iframe src="{{ $embedSrc }}"
+                                            style="position:absolute;inset:0;width:100%;height:100%;border:0"
+                                            title="{{ $p['title'] ?? 'Video' }}"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen loading="lazy"></iframe>
                                     </div>
                                 @else
-                                    <div class="bg-black ratio-9-16"></div>
+                                    <div style="background:#000;aspect-ratio:9/16"></div>
                                 @endif
 
-                                <div
-                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent">
-                                </div>
-
-                                {{-- badges --}}
-                                {{-- <div class="absolute top-3 left-4 text-[12px] font-medium text-white/90 z-10">
-                                    {{ $p['category'] ?? '' }}
-                                </div>
-                                <div class="absolute top-3 right-4 text-[12px] text-white/80 z-10">
-                                    {{ $p['date'] ?? '' }}
-                                </div> --}}
-
-                                {{-- caption --}}
+                                {{-- Gradient + caption overlay di bawah --}}
+                                <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                                 <div class="absolute left-0 right-0 bottom-0 p-4 text-white z-10">
-                                    <h3 class="text-xl font-semibold leading-snug">
-                                        {{ $p['title'] ?? '' }}
-                                    </h3>
+                                    <h3 class="text-xl font-semibold leading-snug">{{ $p['title'] ?? '' }}</h3>
                                     @if (!empty($p['excerpt']))
-                                        <p class="mt-2 text-sm text-white/85 line-clamp-2">
-                                            {{ $p['excerpt'] }}
-                                        </p>
+                                        <p class="mt-1 text-sm text-white/85 line-clamp-2">{{ $p['excerpt'] }}</p>
                                     @endif
                                 </div>
                             </div>
@@ -119,42 +97,27 @@
             </div>
         </div>
 
-        {{-- DESKTOP/TABLET GRID (≥sm) --}}
-        <div class="hidden sm:grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {{-- DESKTOP GRID (≥lg) --}}
+        <div class="hidden lg:grid lg:grid-cols-4 gap-6 lg:gap-8">
             @foreach ($posts as $p)
                 @php
                     $permalink = $p['url'] ?? '';
-                    $yt = $p['embed'] ?? null;
-                    $ytId = null;
-
-                    if ($yt) {
-                        if (preg_match('~youtube\.com/shorts/([^/?#&]+)~i', $yt, $m)) {
-                            $ytId = $m[1];
-                        } elseif (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/)([^/?#&]+)~i', $yt, $m)) {
-                            $ytId = $m[1];
-                        }
-                    }
-
-                    $isFirst = $loop->first;
-                    $baseParam = 'mute=1&playsinline=1&controls=0&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3';
-                    $ytSrc = $ytId
-                        ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}&autoplay=" .
-                            ($isFirst ? '1' : '0')
-                        : null;
+                    $ytId = ytIdFromUrl($p['embed'] ?? null);
+                    $baseParam = 'mute=1&playsinline=1&controls=1&rel=0&modestbranding=1&loop=1&fs=0&iv_load_policy=3&autoplay=1';
+                    $embedSrc = $ytId ? "https://www.youtube.com/embed/{$ytId}?{$baseParam}&playlist={$ytId}" : null;
                 @endphp
 
-                <article
-                    class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
+                <article class="relative group sosmed-card opacity-0 translate-y-[50px] transition-all duration-[900ms] ease-out">
                     <div class="relative rounded-[10px] overflow-hidden shadow">
-                        {{-- overlay klik ke IG --}}
-                        <a href="{{ $permalink }}" target="_blank" rel="noopener" class="absolute inset-0 z-20"
-                            aria-label="Open Instagram post"></a>
+                        <a href="{{ $permalink }}" target="_blank" rel="noopener"
+                            class="absolute inset-0 z-20" aria-label="Open Instagram post"></a>
 
-                        @if ($ytSrc)
-                            <div class="bg-black ratio-9-16">
-                                <iframe class="ytvid w-full h-full block" data-vid="{{ $ytId }}"
-                                    data-base="https://www.youtube.com/embed/{{ $ytId }}?{{ $baseParam }}&playlist={{ $ytId }}"
-                                    src="{{ $ytSrc }}" title="{{ $p['title'] ?? 'Shorts' }}"
+                        {{-- YouTube iframe langsung --}}
+                        @if ($embedSrc)
+                            <div class="ratio-9-16 relative">
+                                <iframe src="{{ $embedSrc }}"
+                                    class="absolute inset-0 w-full h-full border-0"
+                                    title="{{ $p['title'] ?? 'Video' }}"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen loading="lazy"></iframe>
                             </div>
@@ -162,27 +125,14 @@
                             <div class="bg-black ratio-9-16"></div>
                         @endif
 
-                        <div
-                            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/25 to-transparent">
-                        </div>
-
-                        {{-- badges --}}
-                        <div class="absolute top-3 left-4 text-[12px] font-medium text-white/90 z-10">
-                            {{ $p['category'] ?? '' }}
-                        </div>
-                        <div class="absolute top-3 right-4 text-[12px] text-white/80 z-10">
-                            {{ $p['date'] ?? '' }}
-                        </div>
-
-                        {{-- caption --}}
+                        {{-- Gradient + caption overlay di bawah --}}
+                        <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                        <div class="absolute top-3 left-4 text-[12px] font-medium text-white/80 z-10">{{ $p['category'] ?? '' }}</div>
+                        <div class="absolute top-3 right-4 text-[12px] text-white/70 z-10">{{ $p['date'] ?? '' }}</div>
                         <div class="absolute left-0 right-0 bottom-0 p-4 sm:p-5 text-white z-10">
-                            <h3 class="text-xl sm:text-2xl font-semibold leading-snug">
-                                {{ $p['title'] ?? '' }}
-                            </h3>
+                            <h3 class="text-xl sm:text-2xl font-semibold leading-snug">{{ $p['title'] ?? '' }}</h3>
                             @if (!empty($p['excerpt']))
-                                <p class="mt-2 text-sm text-white/85 line-clamp-2">
-                                    {{ $p['excerpt'] }}
-                                </p>
+                                <p class="mt-2 text-sm text-white/85 line-clamp-2">{{ $p['excerpt'] }}</p>
                             @endif
                         </div>
                     </div>
@@ -208,37 +158,9 @@
         }
     </style>
 
-    {{-- Script: autoplay pertama, hover autoplay item lain, pause yang lain --}}
+    {{-- Script: facade YT (load iframe hanya saat diklik) --}}
     @once
         <script>
-            // Desktop hover autoplay (juga standarisasi pertama)
-            document.addEventListener('DOMContentLoaded', () => {
-                const iframes = Array.from(document.querySelectorAll('.ytvid'));
-
-                function playOnly(vidId) {
-                    iframes.forEach(iframe => {
-                        const base = iframe.dataset.base;
-                        const id = iframe.dataset.vid;
-                        if (!base || !id) return;
-
-                        const src = base + (id === vidId ? '&autoplay=1' : '&autoplay=0');
-                        if (iframe.src !== src) iframe.src = src;
-                    });
-                }
-
-                const first = iframes[0];
-                if (first) playOnly(first.dataset.vid);
-
-                // Hover untuk desktop
-                document.querySelectorAll('article .ytvid').forEach(iframe => {
-                    const article = iframe.closest('article');
-                    if (!article) return;
-                    article.addEventListener('mouseover', () => playOnly(iframe.dataset.vid), {
-                        passive: true
-                    });
-                });
-            });
-
             // Alpine mini untuk slider mobile
             function sosmedMobile() {
                 return {
@@ -251,55 +173,28 @@
                     },
                     updateDots() {
                         const items = this.$refs.track?.querySelectorAll('article').length || 0;
-                        const pages = Math.max(1, items); // perPage 1 di mobile
-                        this.dots = Array.from({
-                            length: pages
-                        });
+                        const pages = Math.max(1, items);
+                        this.dots = Array.from({ length: pages });
                         this.activeDot = Math.min(this.activeDot, pages - 1);
                     },
-                    init() {
-                        this.updateDots();
-                    }
+                    init() { this.updateDots(); }
                 }
             }
-        </script>
-        <script>
+
             document.addEventListener('DOMContentLoaded', () => {
-
-                // reveal animasi
+                // Reveal animasi saat scroll — hanya desktop cards
                 const cards = document.querySelectorAll('.sosmed-card');
-
                 function revealCards() {
-                    cards.forEach((c) => {
-                        const r = c.getBoundingClientRect().top;
-                        if (r < window.innerHeight * 0.92) {
-                            c.classList.remove('opacity-0', 'translate-y-[50px]');
+                    cards.forEach(c => {
+                        if (c.getBoundingClientRect().top < window.innerHeight * 0.92) {
+                            c.classList.remove('opacity-0');
+                            c.style.transform = 'none';
                         }
                     });
                 }
-
-                window.addEventListener('scroll', revealCards);
+                window.addEventListener('scroll', revealCards, { passive: true });
                 revealCards();
 
-
-                // MOBILE autoplay (bukan hover)
-                const iframes = document.querySelectorAll('.ytvid');
-
-                function playIfVisible() {
-                    iframes.forEach((iframe) => {
-                        const rect = iframe.getBoundingClientRect();
-                        const visible = rect.top >= 0 && rect.top < window.innerHeight * 0.8;
-                        const base = iframe.dataset.base;
-                        const id = iframe.dataset.vid;
-                        if (!base || !id) return;
-
-                        const src = base + (visible ? '&autoplay=1' : '&autoplay=0');
-                        if (iframe.src !== src) iframe.src = src;
-                    });
-                }
-
-                window.addEventListener('scroll', playIfVisible);
-                playIfVisible();
             });
         </script>
     @endonce

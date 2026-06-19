@@ -12,9 +12,9 @@
 
             {{-- Brand + copyrights (span 2 on lg) --}}
             <div class="col-span-2">
-                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono"
+                <img src="{{ asset('logo/logowhite.webp') }}" alt="Morizono" loading="lazy" width="160" height="28"
                     class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
-                <img src="{{ asset('logo/developed2.webp') }}" alt="Morizono"
+                <img src="{{ asset('logo/developed2.webp') }}" alt="Developed by Gardens" loading="lazy" width="160" height="28"
                     class="block w-auto h-auto sm:w-auto sm:h-7 mb-3 opacity-90 object-contain">
                 {{--
                 <img src="{{ asset('logo/footerph.webp') }}" alt="Sumitomo Forestry"
@@ -30,23 +30,24 @@
 
             {{-- Address --}}
             <div>
-                <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">Marketing Gallery</div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">Marketing Gallery</div>
                 <div class="text-sm leading-6">{{ $address }}</div>
             </div>
 
             {{-- WhatsApp + Email stack on lg into two boxes --}}
             <div>
-                <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">WhatsApp</div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">WhatsApp</div>
                 <a href="https://wa.me/{{ preg_replace('/\D/', '', $wa) }}"
+                    target="_blank" rel="noopener noreferrer"
                     class="text-sm leading-6 hover:underline">{{ $wa }}</a>
 
-                <div class="mt-6 text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">E-mail</div>
+                <div class="mt-6 text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">E-mail</div>
                 <a href="mailto:{{ $email }}" class="text-sm leading-6 hover:underline">{{ $email }}</a>
             </div>
 
             {{-- Opening hours --}}
             <div>
-                <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">Opening Hours</div>
+                <div class="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">Opening Hours</div>
                 <div class="text-sm leading-6">
                     {{ $hours_days }} <span class="opacity-50">
                         <br>
@@ -57,7 +58,7 @@
             {{-- Links --}}
             <div class="grid grid-cols-2 gap-8 lg:gap-6 col-span-2 lg:col-span-1">
                 <div>
-                    <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">Company</div>
+                    <div class="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">Company</div>
                     <ul class="space-y-2 text-sm">
                         <li><a href="{{ route('landing') }}#home" class="hover:underline">Home</a></li>
                         <li><a href="{{ route('landing') }}#about" class="hover:underline">About</a></li>
@@ -67,7 +68,7 @@
                     </ul>
                 </div>
                 <div>
-                    <div class="text-[11px] uppercase tracking-[0.18em] text-white/50 mb-2">Follow Us</div>
+                    <div class="text-[11px] uppercase tracking-[0.18em] text-white/70 mb-2">Follow Us</div>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#" class="hover:underline">Instagram</a></li>
                         <li><a href="#" class="hover:underline">Youtube</a></li>
