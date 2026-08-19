@@ -377,7 +377,7 @@
                     '2200 Watt',
                     '2 Storey',
                     '3 Bedrooms',
-                    '2 Bathroom',
+                    '3 Bathroom',
                     '2 Carport',
                 ],
                 'items' => [

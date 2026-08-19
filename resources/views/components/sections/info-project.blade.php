@@ -19,7 +19,7 @@ Every space is carefully designed to bring balance and a sense of peace, the ide
                 rotate-0 md:rotate-[-6deg]
                 transition-all duration-[1300ms] ease-out">
                 <div class="rounded-[22px] overflow-hidden shadow-sm md:h-96 lg:h-[500px]">
-                    <img src="{{ $imgLeft }}" alt="Morizono Gate" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{{ $imgLeft }}" alt="Morizono Gate" class="w-full h-full object-cover" loading="lazy" width="1200" height="676">
                 </div>
             </div>
 
@@ -45,7 +45,7 @@ Every space is carefully designed to bring balance and a sense of peace, the ide
                 rotate-0 md:rotate-[6deg]
                 transition-all duration-[1300ms] ease-out delay-[120ms]">
                 <div class="rounded-[22px] overflow-hidden shadow-sm md:h-96 lg:h-[500px]">
-                    <img src="{{ $imgRight }}" alt="Morizono Facilities" class="w-full h-full object-cover" loading="lazy">
+                    <img src="{{ $imgRight }}" alt="Morizono Facilities" class="w-full h-full object-cover" loading="lazy" width="1200" height="600">
                 </div>
             </div>
 

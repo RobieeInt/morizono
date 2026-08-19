@@ -28,10 +28,17 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('faviconm.svg') }}">
 
     {{-- Preconnect external domains --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://connect.facebook.net">
     <link rel="preconnect" href="https://www.youtube-nocookie.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
+
+    {{-- Google Fonts non-render-blocking (tidak block FCP) --}}
+    <link rel="preload" as="style" onload="this.rel='stylesheet'"
+          href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"></noscript>
 
     {{-- Guard anti-overflow & media safety --}}
     <style>
@@ -140,8 +147,8 @@
         {{ $slot }}
     </main>
 
-    {{-- Banner Modal --}}
-    <div id="banner-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 px-4">
+    {{-- Banner Modal: selalu flex+fixed (tidak geser konten = no CLS), toggle via opacity --}}
+    <div id="banner-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 opacity-0 pointer-events-none" style="transition:opacity .25s">
         <div id="banner-modal-inner" class="relative w-full max-w-md">
             {{-- Tombol close --}}
             <button id="banner-close" type="button" aria-label="Tutup banner"
@@ -166,17 +173,17 @@
             if (!modal) return;
 
             const openModal = () => {
-                // Kompensasi scrollbar agar konten tidak bergeser (fix CLS)
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.classList.add('opacity-100');
+                // Kompensasi scrollbar (fix CLS pada browser dengan scrollbar visible)
                 const sw = window.innerWidth - document.documentElement.clientWidth;
                 if (sw > 0) document.body.style.paddingRight = sw + 'px';
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
                 document.body.classList.add('overflow-hidden');
             };
 
             const closeModal = () => {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('opacity-100');
                 document.body.classList.remove('overflow-hidden');
                 document.body.style.paddingRight = '';
             };
