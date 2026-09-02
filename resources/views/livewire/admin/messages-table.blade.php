@@ -1,7 +1,15 @@
 <div>
-    <div class="flex items-center justify-between gap-3 mb-3">
-        <input type="text" wire:model.live.debounce.300ms="search" placeholder="Search name/email/phone/message"
-            class="border rounded px-3 py-2 w-full md:w-80">
+    <div class="flex items-center justify-between gap-3 mb-3 flex-wrap">
+        <div class="flex items-center gap-2 flex-1">
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="Search name/email/phone/message"
+                class="border rounded px-3 py-2 w-full md:w-80">
+
+            <select wire:model.live="source" class="border rounded px-3 py-2 text-sm">
+                <option value="">Semua Sumber</option>
+                <option value="contact_form">Contact Form</option>
+                <option value="kpr_simulator">KPR Simulator</option>
+            </select>
+        </div>
 
         <a href="{{ route('admin.export.contacts') }}" class="px-3 py-2 border rounded bg-white hover:bg-gray-50 text-sm">
             Export CSV
@@ -17,6 +25,7 @@
                     <th class="p-2 text-left">Email</th>
                     <th class="p-2 text-left">Phone</th>
                     <th class="p-2 text-left">Message</th>
+                    <th class="p-2 text-left">Source</th>
                     <th class="p-2 text-left">Status</th>
                     <th class="p-2"></th>
                 </tr>
@@ -47,6 +56,14 @@
                         </td>
 
                         <td class="p-2">
+                            @if ($c->source === 'kpr_simulator')
+                                <span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-[#C8A767]/20 text-[#4a3c33]">KPR Simulator</span>
+                            @else
+                                <span class="inline-block px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">Contact Form</span>
+                            @endif
+                        </td>
+
+                        <td class="p-2">
                             @if ($c->read_at)
                                 <span class="text-green-700">Read</span>
                             @else
@@ -69,7 +86,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="p-4 text-center text-gray-500">No data</td>
+                        <td colspan="8" class="p-4 text-center text-gray-500">No data</td>
                     </tr>
                 @endforelse
             </tbody>

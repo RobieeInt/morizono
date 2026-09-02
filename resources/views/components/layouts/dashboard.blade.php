@@ -19,6 +19,8 @@
                 <a href="{{ route('admin.messages') }}" class="block px-3 py-2 rounded hover:bg-gray-100">Inbox</a>
                 <a href="{{ route('admin.export.contacts') }}" class="block px-3 py-2 rounded hover:bg-gray-100">Export
                     CSV</a>
+                <a href="{{ route('admin.house-units') }}" class="block px-3 py-2 rounded hover:bg-gray-100">Unit Rumah</a>
+                <a href="{{ route('admin.banks') }}" class="block px-3 py-2 rounded hover:bg-gray-100">Bank KPR</a>
             </nav>
             <div class="mt-auto p-3 text-xs text-gray-500">Logged in as <b>{{ auth()->user()->email }}</b></div>
         </aside>

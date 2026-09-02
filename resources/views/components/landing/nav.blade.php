@@ -34,6 +34,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ route('kpr.simulator') }}"
+                        class="{{ request()->routeIs('kpr.simulator') ? 'text-gray-900 font-semibold' : 'hover:text-gray-900' }}">
+                        Simulasi KPR
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ request()->routeIs('landing') ? '#contact' : route('landing') . '#contact' }}"
                         class="hover:text-gray-900">
                         Contact
@@ -84,6 +91,12 @@
                 <li>
                     <a href="{{ route('news.index') }}" class="block rounded px-3 py-2 hover:bg-black/5">
                         Updates
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('kpr.simulator') }}" class="block rounded px-3 py-2 hover:bg-black/5">
+                        Simulasi KPR
                     </a>
                 </li>
 

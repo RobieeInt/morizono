@@ -727,6 +727,8 @@
             - Link tombol "See All" ke halaman index berita.
         --}} />
 
+    <x-sections.kpr-cta />
+
     <x-sections.contact-map :title="'How can we help you? Write us a message'" {{-- :title (string)
             - Judul section contact.
         --}} :map-query="'Jl. Cinangka Raya, Curug, Bojongsari, Depok, Jawa Barat 16517'" {{-- :map-query (string)

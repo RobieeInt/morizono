@@ -35,11 +35,13 @@
 
         {{-- Helper macro: render 1 sosmed card (facade YT) --}}
         @php
-            function ytIdFromUrl($url) {
-                if (!$url) return null;
-                if (preg_match('~youtube\.com/shorts/([^/?#&]+)~i', $url, $m)) return $m[1];
-                if (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/)([^/?#&]+)~i', $url, $m)) return $m[1];
-                return null;
+            if (! function_exists('ytIdFromUrl')) {
+                function ytIdFromUrl($url) {
+                    if (!$url) return null;
+                    if (preg_match('~youtube\.com/shorts/([^/?#&]+)~i', $url, $m)) return $m[1];
+                    if (preg_match('~(?:youtube\.com/watch\?v=|youtu\.be/)([^/?#&]+)~i', $url, $m)) return $m[1];
+                    return null;
+                }
             }
         @endphp
 

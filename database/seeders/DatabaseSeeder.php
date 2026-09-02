@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(NewsSeeder::class);
+        $this->call(BankSeeder::class);
+        $this->call(HouseUnitSeeder::class);
     }
 }

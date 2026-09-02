@@ -17,10 +17,18 @@ class MessagesTable extends Component
     #[Url(history: true, keep: true)]
     public int $perPage = 20;
 
+    #[Url(history: true, keep: true)]
+    public string $source = '';
+
     public bool $compact = false;
 
     // Livewire v3: hook saat properti 'search' di-update
     public function updatedSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedSource(): void
     {
         $this->resetPage();
     }
@@ -77,6 +85,7 @@ class MessagesTable extends Component
                       ->orWhere('message', 'like', $like);
                 });
             })
+            ->when($this->source !== '', fn ($q) => $q->where('source', $this->source))
             ->latest('created_at')
             ->paginate($this->perPage);
 
